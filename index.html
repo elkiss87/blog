@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ELKISS BLOG</title>
+  <meta name="description" content="만들면서 배운 것들을 정리하는 기술 블로그">
+  <style>
+    /* 색은 elkiss.me 와 같은 값을 쓴다. 서브도메인이라 오가는 사람이
+       같은 사이트로 느껴야 한다. --sign 만 여기서 추가했다 */
+    :root {
+      --bg: #faf9f7;
+      --text: #1c1c1a;
+      --text-sub: #6b6a66;
+      --line: #e5e3de;
+      --sign: #b8912f;
+    }
+
+    * { box-sizing: border-box; }
+
+    /* 내용이 한 화면도 안 되는 공사중 페이지라 세로 가운데로 앉힌다.
+       align-items: center 가 아니라 margin: auto 인 이유는, 전자는 내용이
+       화면보다 길어질 때 위쪽이 잘려서 스크롤로도 닿지 않기 때문이다 */
+    body {
+      display: flex;
+      min-height: 100dvh;
+      margin: 0;
+      padding: 48px 20px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 폭을 묶는 것은 화면이 남아서가 아니라 길면 읽기 나빠서다.
+       한글 본문은 한 줄이 40자를 넘어가면 눈이 다음 줄을 놓친다 */
+    .wrap {
+      max-width: 640px;
+      margin: auto;
+      text-align: center;
+    }
+
+    /* 워드마크. 대문자는 크기·굵기·자간과 함께 가야 한다.
+       자간을 준 가운데 정렬은 마지막 글자 뒤 자간까지 계산돼 좌우가 맞는다.
+       text-indent 로 보정하면 오히려 오른쪽으로 밀린다 (profile-site 에서 계측) */
+    .name {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    .sign {
+      margin: 44px 0 0;
+      color: var(--sign);
+    }
+
+    .sign svg { display: block; margin: 0 auto; }
+
+    .sign-label {
+      margin: 10px 0 0;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: var(--sign);
+    }
+
+    .hello {
+      margin: 44px 0 6px;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    .note {
+      margin: 0;
+      color: var(--text-sub);
+      font-size: 15px;
+    }
+
+    /* 워드마크·라벨과 달리 여기는 대문자로 만들지 않는다.
+       도메인은 주소라서 소문자가 원래 모양이다 */
+    footer {
+      margin-top: 44px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--text-sub);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+    }
+
+    a:hover { color: var(--text); }
+
+    /* 넓은 화면에서는 워드마크를 키운다. 좁은 화면에서 같은 크기를 쓰면
+       자간 때문에 한 줄을 넘겨 두 줄로 접힌다 */
+    @media (min-width: 640px) {
+      .name { font-size: 34px; }
+      .hello { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1 class="name">ELKISS BLOG</h1>
+
+    <div class="sign">
+      <!-- 공사중 표지판. 외부 요청 없이 인라인 SVG 로 그린다.
+           currentColor 를 쓰면 색 변수 하나로 아이콘과 라벨이 같이 움직인다 -->
+      <svg width="46" height="46" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="1.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3.6 2.9 19.6h18.2z"/>
+        <path d="M12 10v4"/>
+        <path d="M12 16.9h.01"/>
+      </svg>
+      <p class="sign-label">Under construction</p>
+    </div>
+
+    <p class="hello">Hello, world.</p>
+    <p class="note">
+      아직 글은 없습니다. 지금은 도메인과 배포만 연결해둔 상태입니다.
+    </p>
+
+    <footer>
+      <a href="https://elkiss.me">elkiss.me</a>
+    </footer>
+  </div>
+</body>
+</html>
