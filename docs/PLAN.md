@@ -45,8 +45,10 @@ Actions 문제인지 구분이 안 된다. HTML 하나면 안 뜰 때 원인이 
 - [x] `blog.elkiss.me` DNS 연결 — CNAME 하나, DNS only
 - [x] HTTPS — 인증서 발급 완료, 200 응답 확인
 - [x] GitHub Pages 가 저장소 내용을 서빙한다
-- [ ] **`index.html` 이 실제로 보인다** — push 하면 끝난다
-- [ ] 과정을 [LOG.md](LOG.md) 에 남긴다 — 첫 글의 재료다
+- [x] `index.html` 이 실제로 보인다
+- [x] 과정을 [LOG.md](LOG.md) 에 남긴다 — 첫 글의 재료다
+
+**2026-08-05 달성.** 이제부터는 파일만 고치면 되고, 인프라는 다시 건드리지 않는다.
 
 디자인은 이 단계에서 완성하지 않는다. **경로가 먼저다.**
 
@@ -70,7 +72,7 @@ Actions 문제인지 구분이 안 된다. HTML 하나면 안 뜰 때 원인이 
 |---|---|
 | 원격 저장소 | `elkiss87/blog` (public), `origin` 연결됨 |
 | 커밋 이메일 | `user.email` 을 noreply 주소로 로컬 설정 완료 |
-| 내용 | `index.html` — 공사중 한 장. **아직 push 전** |
+| 내용 | `index.html` — 공사중 한 장. 배포됨 |
 | Pages | 켜짐 (`main` / root). `CNAME` 파일은 GitHub 이 생성 |
 | 도메인 | `blog.elkiss.me` — CNAME → `elkiss87.github.io`, DNS only. HTTPS 정상 |
 | 스택 | **미정.** 1차 목표 동안은 순수 HTML |
@@ -83,6 +85,7 @@ Actions 문제인지 구분이 안 된다. HTML 하나면 안 뜰 때 원인이 
 - 도메인 하나를 서브도메인으로 나눠 쓴다 (프로필=루트, 블로그=`blog.`)
 - **1차는 순수 HTML 로 인프라만 검증한다.** 스택은 그 다음
 - 색은 `elkiss.me` 와 같은 값을 쓴다. 서브도메인이라 오가는 사람이 같은 곳으로 느껴야 한다
+- **파비콘은 `elkiss.me` 와 같은 아이콘을 쓴다.** 색도 같다 → [LOG.md](LOG.md) 2026-08-07
 - 사내 코드·시스템 설계는 쓰지 않는다 → 규칙은 `CLAUDE.md`
 
 **아직 결정하지 않은 것**
@@ -100,11 +103,11 @@ Actions 문제인지 구분이 안 된다. HTML 하나면 안 뜰 때 원인이 
 
 **1차 — 인프라**
 
-1. [ ] 첫 push
-2. [ ] GitHub Pages 켜기 (`main` / root)
-3. [ ] Cloudflare 에 `blog` CNAME 추가 → `elkiss87.github.io`, DNS only
-4. [ ] Pages 에 커스텀 도메인 입력 → HTTPS 확인
-5. [ ] 겪은 것을 [LOG.md](LOG.md) 에 정리
+1. [x] 첫 push
+2. [x] GitHub Pages 켜기 (`main` / root)
+3. [x] Cloudflare 에 `blog` CNAME 추가 → `elkiss87.github.io`, DNS only
+4. [x] Pages 에 커스텀 도메인 입력 → HTTPS 확인
+5. [x] 겪은 것을 [LOG.md](LOG.md) 에 정리
 
 **2차 — 글을 쓰는 경로**
 
