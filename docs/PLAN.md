@@ -73,7 +73,7 @@ Actions 문제인지 구분이 안 된다. HTML 하나면 안 뜰 때 원인이 
 | 원격 저장소 | `elkiss87/blog` (public), `origin` 연결됨 |
 | 커밋 이메일 | `user.email` 을 noreply 주소로 로컬 설정 완료 |
 | 내용 | `index.html` — 공사중 한 장. 배포됨 |
-| Pages | 켜짐 (`main` / root). `CNAME` 파일은 GitHub 이 생성 |
+| Pages | 켜짐. 배포는 커스텀 Actions (`.github/workflows/deploy.yml`) |
 | 도메인 | `blog.elkiss.me` — CNAME → `elkiss87.github.io`, DNS only. HTTPS 정상 |
 | 스택 | **미정.** 1차 목표 동안은 순수 HTML |
 | 글 | 없음 |

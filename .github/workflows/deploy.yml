@@ -1,0 +1,61 @@
+name: Custom Deploy to GitHub Pages
+
+on:
+  # main 브랜치에 푸시될 때마다 실행
+  push:
+    branches: ["main"]
+  # Actions 탭에서 수동으로 버튼을 눌러 실행할 수 있게 허용
+  workflow_dispatch:
+
+# GITHUB_TOKEN 의 권한 설정
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 진행 중인 배포가 있으면 취소하고 최신 커밋으로만 덮어쓴다.
+# 연달아 푸시했을 때 배포가 줄줄이 대기하며 꼬이는 것을 막는다.
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 사이트에 필요한 파일만 골라 담는다.
+      #
+      # 저장소 루트를 통째로 올리면 README.md, CLAUDE.md, docs/ 까지
+      # blog.elkiss.me 에서 그대로 열린다. 게다가 기본 배포 방식은 Jekyll 을
+      # 돌리기 때문에 마크다운이 읽기 좋은 HTML 로 렌더링까지 된다.
+      # public 저장소라 유출은 아니지만, 작업 문서가 개인 도메인에서
+      # 서비스되고 검색엔진에 색인될 이유는 없다.
+      #
+      # 스택을 얹게 되면 이 단계만 빌드 명령으로 바꾸면 된다.
+      # 나머지 골격은 그대로 쓴다.
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp favicon.svg _site/
+          cp CNAME _site/
+          echo "--- 배포될 파일 ---"
+          find _site -type f | sort
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
