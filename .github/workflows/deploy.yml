@@ -32,7 +32,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 버전을 박아둔다. `latest` 로 받으면 어느 날 Hugo 가 올라가면서
+      # 버전을 고정한다. `latest` 로 받으면 어느 날 Hugo 가 올라가면서
       # 손댄 적 없는 사이트의 빌드가 깨진다. 실제로 0.146 에서 템플릿 구조가
       # 통째로 바뀐 전례가 있다. 올릴 때는 이 줄을 고쳐서 의도적으로 올린다.
       #

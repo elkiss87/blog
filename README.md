@@ -45,7 +45,7 @@ hugo server
 ```
 
 `http://localhost:1313/` 이 열립니다. 저장하면 자동으로 새로고침됩니다.
-배포에 쓰는 버전은 `.github/workflows/deploy.yml` 에 박아두었습니다.
+배포에 쓰는 버전은 `.github/workflows/deploy.yml` 에 고정해두었습니다.
 
 ## 문서
 
