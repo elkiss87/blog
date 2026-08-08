@@ -1,0 +1,21 @@
+{{ define "main" }}
+  {{/* 첫 화면은 글 목록이다. 자기소개는 elkiss.me 가 이미 한다 (docs/PLAN.md §5) */}}
+  <h1 class="page-title">글</h1>
+
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+
+  {{ with $posts.ByDate.Reverse }}
+    <ul class="post-list">
+      {{ range . }}
+        <li class="post-item">
+          {{/* Go 템플릿의 날짜 서식은 "2006-01-02" 라는 기준 시각으로 쓴다.
+               yyyy-MM-dd 가 아니다. Go 를 처음 만지면 반드시 한 번 걸리는 자리다 */}}
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p class="note">아직 글이 없습니다.</p>
+  {{ end }}
+{{ end }}

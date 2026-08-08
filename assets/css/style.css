@@ -1,0 +1,229 @@
+/* 색은 elkiss.me / 대문 index.html 과 같은 값을 쓴다.
+   서브도메인이라 오가는 사람이 같은 사이트로 느껴야 한다.
+   본문용으로 --code-bg 하나만 새로 넣었다 */
+:root {
+  --bg: #faf9f7;
+  --text: #1c1c1a;
+  --text-sub: #6b6a66;
+  --line: #e5e3de;
+  --code-bg: #f3f1ed;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 폭을 묶는 것은 화면이 남아서가 아니라 길면 읽기 나빠서다.
+   한글 본문은 한 줄이 40자를 넘어가면 눈이 다음 줄을 놓친다.
+   640px + 17px 이면 한 줄에 한글 37~38자가 들어간다 */
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── 머리·꼬리 ───────────────────────────────── */
+
+.site-head { padding-top: 40px; padding-bottom: 32px; }
+
+.site-name {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  color: var(--text);
+  text-decoration: none;
+  border: 0;
+}
+
+.site-foot {
+  margin-top: 64px;
+  padding-top: 20px;
+  padding-bottom: 48px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+/* 대문 index.html 의 푸터 링크와 같은 모양. 빠뜨리면 브라우저 기본 파란색이
+   나오는데, 사이트에 파란 게 하나도 없어서 여기만 튄다 */
+.site-foot a {
+  color: var(--text-sub);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+}
+
+.site-foot a:hover { color: var(--text); }
+
+/* ── 목록 ────────────────────────────────────── */
+
+.page-title {
+  margin: 0 0 28px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.post-list { margin: 0; padding: 0; list-style: none; }
+
+/* 날짜와 제목을 세로로 쌓는다. 좁은 화면에서 한 줄에 넣으면
+   제목이 접히면서 날짜와 어긋나 읽기 나빠진다 */
+.post-item { padding: 14px 0; border-bottom: 1px solid var(--line); }
+
+.post-item time {
+  display: block;
+  font-size: 13px;
+  color: var(--text-sub);
+  font-variant-numeric: tabular-nums;
+}
+
+.post-item a {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  border: 0;
+}
+
+.post-item a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── 글 본문 ─────────────────────────────────── */
+
+.post-head { margin-bottom: 36px; }
+
+.post-date {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-sub);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 본문만 17px / 줄간격 1.8 로 키운다. 목록보다 오래 붙잡고 읽는 곳이라
+   같은 값을 쓰면 빽빽하게 느껴진다 */
+.prose { font-size: 17px; line-height: 1.8; }
+
+.prose h2 {
+  margin: 48px 0 14px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.prose h3 { margin: 32px 0 10px; font-size: 17px; font-weight: 700; }
+
+.prose p { margin: 0 0 20px; }
+
+.prose ul, .prose ol { margin: 0 0 20px; padding-left: 22px; }
+.prose li { margin: 6px 0; }
+
+.prose blockquote {
+  margin: 24px 0;
+  padding: 2px 0 2px 16px;
+  border-left: 3px solid var(--line);
+  color: var(--text-sub);
+}
+
+.prose blockquote p:last-child { margin-bottom: 0; }
+
+.prose a { color: var(--text); border-bottom: 1px solid var(--line); }
+.prose a:hover { border-bottom-color: var(--text-sub); }
+
+.prose img { max-width: 100%; height: auto; }
+
+.prose hr { margin: 40px 0; border: 0; border-top: 1px solid var(--line); }
+
+/* ── 코드 ────────────────────────────────────── */
+
+/* 기술 블로그에서 제일 자주 깨지는 자리다.
+   모바일에서는 긴 줄이 본문을 밀지 않아야 하고(가로 스크롤은 코드 블록 안에서만),
+   데스크톱에서는 줄바꿈이 코드를 망가뜨리지 않아야 한다(그래서 white-space: pre) */
+.prose pre {
+  margin: 0 0 20px;
+  padding: 16px 18px;
+  overflow-x: auto;              /* 스크롤은 이 상자 안에서만 */
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose pre code {
+  display: block;
+  padding: 0;
+  background: none;
+  border: 0;
+  white-space: pre;              /* 접지 않는다. 코드는 줄바꿈 위치가 의미다 */
+  font-size: inherit;
+}
+
+/* 문단 안에 섞이는 짧은 코드. 배경만 옅게 깔고 크기는 본문보다 조금 작게 */
+.prose code {
+  padding: 2px 5px;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: .88em;
+}
+
+.prose code, .prose pre {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas,
+               "Liberation Mono", Menlo, monospace;
+}
+
+/* chroma.css 가 .chroma 에 자기 배경색을 깔고 온다. 그대로 두면 코드 블록만
+   사이트 팔레트에서 떨어져 나오므로 지우고 --code-bg 를 쓰게 한다.
+   생성 파일을 고치는 대신 여기서 덮는다 — 다시 생성해도 이 규칙이 살아남는다 */
+.prose .chroma { background: none; }
+
+/* ── 표 ──────────────────────────────────────── */
+
+/* 표도 좁은 화면에서 본문을 밀 수 있어서 감싼 상자에서 스크롤시킨다 */
+.prose .table-wrap { overflow-x: auto; margin: 0 0 20px; }
+
+/* min-width 가 없으면 width:100% 가 표를 화면 폭에 우겨넣어서, 감싼 상자의
+   overflow-x 가 발동하지 않는다. 스크롤되는 대신 칸이 찌그러지고 글자가 잘게 접힌다.
+   넘칠 폭을 줘야 비로소 가로 스크롤이 생긴다 */
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 420px;
+  font-size: 15px;
+}
+.prose th, .prose td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; }
+.prose th { background: var(--code-bg); font-weight: 600; }
+
+/* ── 이전 / 다음 ─────────────────────────────── */
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.post-nav a { color: var(--text-sub); text-decoration: none; }
+.post-nav a:hover { color: var(--text); }
+.post-nav .next { margin-left: auto; text-align: right; }
+
+.note { color: var(--text-sub); }
+
+/* ── 넓은 화면 ───────────────────────────────── */
+
+@media (min-width: 640px) {
+  .site-head { padding-top: 56px; }
+  .page-title { font-size: 30px; }
+  .prose h2 { font-size: 22px; }
+  .prose h3 { font-size: 18px; }
+}

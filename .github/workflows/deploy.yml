@@ -32,6 +32,32 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # 버전을 박아둔다. `latest` 로 받으면 어느 날 Hugo 가 올라가면서
+      # 손댄 적 없는 사이트의 빌드가 깨진다. 실제로 0.146 에서 템플릿 구조가
+      # 통째로 바뀐 전례가 있다. 올릴 때는 이 줄을 고쳐서 의도적으로 올린다.
+      #
+      # 표준 빌드다(extended 아님). 차이는 Sass/SCSS 컴파일뿐인데
+      # 커스텀 프로퍼티를 쓴 순수 CSS 로 가므로 필요 없다.
+      #
+      # 서드파티 액션 대신 공식 릴리스를 직접 받는다. 의존을 하나 줄인다.
+      - name: Install Hugo
+        env:
+          HUGO_VERSION: 0.164.0
+        run: |
+          curl -sSLo /tmp/hugo.tar.gz \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
+          tar -xzf /tmp/hugo.tar.gz -C /tmp hugo
+          sudo install /tmp/hugo /usr/local/bin/hugo
+          hugo version
+
+      # 레이아웃 시안. 대문을 대체하지 않고 /sample/ 아래에만 올린다.
+      # baseURL 에 하위 경로를 주면 Hugo 가 내부 링크를 전부 그 아래로 맞춘다.
+      #
+      # Hugo 를 먼저 돌리는 이유는 --destination 이 대상 디렉터리를 정리할 수
+      # 있어서다. 복사를 먼저 하면 지워질 수 있다.
+      - name: Build sample (Hugo)
+        run: hugo --minify --baseURL "https://blog.elkiss.me/sample/" --destination _site/sample
+
       # 사이트에 필요한 파일만 골라 담는다.
       #
       # 저장소 루트를 통째로 올리면 README.md, CLAUDE.md, docs/ 까지
@@ -40,8 +66,9 @@ jobs:
       # public 저장소라 유출은 아니지만, 작업 문서가 개인 도메인에서
       # 서비스되고 검색엔진에 색인될 이유는 없다.
       #
-      # 스택을 얹게 되면 이 단계만 빌드 명령으로 바꾸면 된다.
-      # 나머지 골격은 그대로 쓴다.
+      # CNAME 을 빼먹으면 커스텀 도메인이 풀린다.
+      # Hugo 가 루트를 가져가면 static/ 에 넣어 자동 복사시킬 수 있지만,
+      # 지금은 Hugo 산출물이 /sample/ 아래라 여기서 직접 넣어야 한다.
       - name: Assemble site
         run: |
           mkdir -p _site

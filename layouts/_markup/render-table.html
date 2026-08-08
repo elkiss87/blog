@@ -1,0 +1,26 @@
+{{/* 표를 감싸서 좁은 화면에서 표만 가로 스크롤되게 한다.
+     감싸지 않으면 넓은 표가 본문 전체를 밀어서 페이지가 가로로 스크롤된다.
+     마크다운이 만드는 태그를 이런 식으로 가로채는 것을 render hook 이라 하고,
+     0.146 부터 layouts/_markup/ 에 둔다 (예전 경로는 layouts/_default/_markup/) */}}
+<div class="table-wrap">
+  <table>
+    <thead>
+      {{ range .THead }}
+        <tr>
+          {{ range . }}
+            <th {{ with .Alignment }}style="text-align: {{ . }}"{{ end }}>{{ .Text }}</th>
+          {{ end }}
+        </tr>
+      {{ end }}
+    </thead>
+    <tbody>
+      {{ range .TBody }}
+        <tr>
+          {{ range . }}
+            <td {{ with .Alignment }}style="text-align: {{ . }}"{{ end }}>{{ .Text }}</td>
+          {{ end }}
+        </tr>
+      {{ end }}
+    </tbody>
+  </table>
+</div>
