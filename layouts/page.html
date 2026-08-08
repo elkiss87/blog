@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <article class="post">
+    <header class="post-head">
+      <h1 class="page-title">{{ .Title }}</h1>
+      {{/* 기술 글은 언제 쓴 것인지가 내용의 일부다 (docs/PLAN.md §5) */}}
+      {{ with .Date }}
+        <time class="post-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+      {{ end }}
+    </header>
+
+    {{/* 마크다운이 변환된 본문. 여기 안의 태그는 CSS 에서 .prose 로 잡는다 */}}
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </article>
+
+  <nav class="post-nav">
+    {{ with .PrevInSection }}<a class="prev" href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
+    {{ with .NextInSection }}<a class="next" href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+  </nav>
+{{ end }}
