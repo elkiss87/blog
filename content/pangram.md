@@ -1,8 +1,15 @@
 ---
+# 이 문서는 글이 아니라 레이아웃을 재는 자다. CSS 를 고칠 때마다 다시 열어본다.
+# 그래서 content/posts/ 가 아니라 여기(최상위)에 두고 목록·RSS 에서 뺀다.
+# 주소로는 열리므로 /pangram/ 으로 언제든 확인할 수 있다.
 title: "다람쥐 헌 쳇바퀴에 타고파"
 date: 2026-08-08
-slug: "pangram"
 description: "글꼴과 레이아웃을 눈으로 확인하려고 만든 시안 문서. 팬그램·긴 글·목록·인용·코드 블록·표를 한 장에 모아뒀다."
+build:
+  list: never
+  render: always
+sitemap:
+  disable: true
 ---
 
 팬그램(pangram)은 글자를 한 번씩 다 쓰는 문장이다. 글꼴을 확인할 때 쓴다.
