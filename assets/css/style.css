@@ -219,6 +219,25 @@ body {
 
 .note { color: var(--text-sub); }
 
+/* ── 로컬 미리보기 전용 ──────────────────────────
+   `hugo server` 로 띄웠을 때만 마크업이 생성된다. 배포본에는 이 클래스가 없다.
+   시안으로 들어가는 문이라 눈에 띌 필요는 없되 찾을 수는 있어야 한다.
+
+   색을 지정하는 이유는 site-foot 과 같다 — 빠뜨리면 브라우저 기본 파란색이
+   나오는데 사이트에 파란 게 하나도 없어서 여기만 튄다 */
+.dev-link { margin: 32px 0 0; font-size: 14px; }
+
+.dev-link a {
+  color: var(--text-sub);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+}
+
+.dev-link a:hover { color: var(--text); }
+
+.dev-link span { margin-left: 10px; font-size: 13px; color: var(--text-sub); }
+
 /* ── 넓은 화면 ───────────────────────────────── */
 
 @media (min-width: 640px) {
@@ -226,4 +245,14 @@ body {
   .page-title { font-size: 30px; }
   .prose h2 { font-size: 22px; }
   .prose h3 { font-size: 18px; }
+}
+
+/* ── [A안] 데스크톱에서 본문 폭을 넓힌다 ────────
+   지금까지 폭을 바꾸는 브레이크포인트가 하나도 없었다. 640px 위쪽은
+   글자만 커지고 폭은 그대로라, 1440px 화면에서 양옆이 400px 씩 빈다.
+
+   800px 부터 거는 이유는 그보다 좁을 때 720px 를 주면 좌우 여백이
+   20px 패딩만 남아 글이 화면 끝에 붙기 때문이다. */
+@media (min-width: 800px) {
+  .wrap { max-width: 720px; }
 }

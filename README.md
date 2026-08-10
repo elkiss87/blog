@@ -40,19 +40,42 @@ Astro·Zola 와 견준 근거는 [docs/STACK.md](docs/STACK.md) §7 에 있습�
 ### 로컬에서 보기
 
 ```
-winget install Hugo.Hugo.Extended   # 표준 빌드로도 됩니다
+winget install Hugo.Hugo.Extended
+```
+
+설치 후 **터미널을 새로 열어야** `hugo` 명령이 잡힙니다. PATH 가 갱신되기 때문입니다.
+표준 빌드(`Hugo.Hugo`)로도 됩니다 — 차이는 Sass 컴파일뿐이고 이 사이트는 순수 CSS 입니다.
+
+```
 hugo server
 ```
 
-`http://localhost:1313/` 이 열립니다. 저장하면 자동으로 새로고침됩니다.
-배포에 쓰는 버전은 `.github/workflows/deploy.yml` 에 고정해두었습니다.
+`http://localhost:1313/` 이 열립니다. 파일을 저장하면 브라우저가 자동으로 새로고침됩니다.
+빌드만 확인하려면 `hugo --minify` 입니다.
+
+**로컬과 배포본은 아직 다르게 보입니다.** 대문을 Hugo 로 넘기기 전까지는 정상입니다.
+
+| | 배포본 `blog.elkiss.me` | 로컬 `localhost:1313` |
+|---|---|---|
+| `/` | 공사중 페이지 (`index.html`) | Hugo 글 목록 |
+| 레이아웃 시안 | `/sample/pangram/` | `/pangram/` |
+
+`hugo server` 는 저장소 루트의 `index.html` 을 읽지 않습니다. Hugo 는 `content/` 와
+`layouts/` 만 보기 때문입니다. `/sample/` 접두사도 배포 워크플로가 붙이는 것이라
+로컬에는 없습니다. 둘 다 대문을 넘기는 시점에 사라지는 차이입니다.
+
+시안 문서에는 홈에 뜨는 **"레이아웃 시안 →"** 링크로 들어갑니다.
+이 링크는 `hugo server` 로 띄웠을 때만 나오고 배포본 HTML 에는 생성되지 않습니다.
+
+배포에 쓰는 Hugo 버전은 `.github/workflows/deploy.yml` 에 고정해두었습니다.
+로컬 버전이 달라도 대개 문제없지만, 화면이 이상하면 먼저 맞춰봅니다.
 
 ## 문서
 
 | | |
 |---|---|
 | [docs/PLAN.md](docs/PLAN.md) | 기획 — 목표, 현재 상태, 사이트 규칙 |
-| [docs/STACK.md](docs/STACK.md) | 기술 스택 검토 (결정 전) |
+| [docs/STACK.md](docs/STACK.md) | 기술 스택 검토 — Hugo 로 확정, 근거는 §7 |
 | [docs/LOG.md](docs/LOG.md) | 작업 일지 |
 
 ## 관련
