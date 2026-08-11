@@ -6,6 +6,58 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+{{/* 화면 밝기를 첫 페인트 전에 정한다. 이 사이트에서 인라인 스크립트가 정당한
+     유일한 자리다 — 파일로 빼면 요청 하나가 렌더를 막고, defer 를 붙이면 밝은
+     화면이 한 번 그려진 뒤 어두워지면서 번쩍인다. 다크로 읽는 사람에게 흰 화면이
+     한 번 스치는 건 꽤 아프다.
+
+     저장값이 없으면 아무것도 안 하는 게 아니라 OS 설정을 읽어 data-theme 을
+     채운다. 그래야 아래 CSS 가 미디어쿼리와 속성 두 벌을 안 들고 있어도 된다.
+     자바스크립트가 없으면 속성이 안 붙는데, 그때는 color-scheme 과 light-dark()
+     가 OS 설정대로 처리하므로 글은 그대로 읽힌다 */}}
+<script>
+  (function () {
+    var KEY = 'theme';
+    var root = document.documentElement;
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // 사생활 보호 모드에서는 localStorage 접근만으로도 예외가 난다
+    function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function system() { return mq.matches ? 'dark' : 'light'; }
+    function apply(t) { root.dataset.theme = t; }
+
+    apply(stored() || system());
+
+    // 저장값이 없을 때만 OS 설정 변화를 따라간다. 사용자가 고른 값은 안 건드린다
+    mq.addEventListener('change', function () { if (!stored()) apply(system()); });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var btn = document.querySelector('.theme-toggle');
+      if (!btn) return;
+      btn.hidden = false;
+      label();
+
+      btn.addEventListener('click', function () {
+        var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        apply(next);
+        try {
+          // 고른 값이 OS 설정과 같아지면 저장값을 지운다. 그러면 "시스템 따라가기"
+          // 로 돌아오므로, 버튼을 셋으로 늘리지 않고도 되돌릴 수 있다
+          if (next === system()) localStorage.removeItem(KEY);
+          else localStorage.setItem(KEY, next);
+        } catch (e) {}
+        label();
+      });
+
+      function label() {
+        var dark = root.dataset.theme === 'dark';
+        btn.setAttribute('aria-label', dark ? '밝은 화면으로 바꾸기' : '어두운 화면으로 바꾸기');
+        btn.setAttribute('title', dark ? '밝은 화면으로' : '어두운 화면으로');
+      }
+    });
+  })();
+</script>
+
 {{/* 글에서는 "제목 · 사이트명", 목록에서는 사이트명만. 같은 말을 두 번 쓰지 않는다 */}}
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
 
@@ -15,6 +67,11 @@
 
 <link rel="icon" href="{{ "favicon.svg" | absURL }}" type="image/svg+xml">
 
+{{/* 모바일 브라우저 주소창 색. 페이지 배경과 맞춰야 경계선이 안 생긴다.
+     값은 style.css 의 --bg 와 같아야 한다 (elkiss.me 와도 같은 값) */}}
+<meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141412" media="(prefers-color-scheme: dark)">
+
 {{/* CSS 는 파일로 둔다. 페이지가 여러 장이면 data URI 나 인라인은 같은 문자열이
      페이지마다 실려 오지만, 파일은 브라우저가 한 번 받아 캐시한다.
      fingerprint 가 내용 해시를 파일명에 넣어서, 고쳤을 때 캐시가 남지 않는다 */}}
@@ -23,7 +80,28 @@
      손으로 고치면 안 되기 때문이고, 합치는 것은 요청을 하나로 줄이기 위해서다 */}}
 {{ $style := resources.Get "css/style.css" }}
 {{ $chroma := resources.Get "css/chroma.css" }}
-{{ with slice $style $chroma | resources.Concat "css/site.css" }}
+
+{{/* 다크용 문법 강조. 선택자가 chroma.css 와 똑같아서 그냥 실으면 밝은 화면에서도
+     이쪽이 이긴다. 여기서 감싸 어두울 때만 걸리게 한다.
+     생성 파일을 손으로 고치지 않으려고 감싸는 일을 빌드 때 한다.
+
+     같은 내용을 두 조건으로 내보낸다. 색 변수와 달리 여기는 생성된 색 리터럴이라
+     light-dark() 로 묶을 수가 없다.
+
+       [data-theme="dark"]  — 스크립트가 채운 값. 평소에 걸리는 쪽이다
+       @media               — 자바스크립트가 없어 속성이 안 붙었을 때의 대비.
+                              빠뜨리면 그 경우 어두운 바닥에 밝은 테마 색이 남아
+                              거의 안 보이는 글자가 생긴다
+
+     한 파일을 두 번 내보내는 것이라 손으로 유지하는 중복이 아니다. 어긋날 수 없다 */}}
+{{/* 뒤에 붙는 한 줄은 배경 되돌리기다. chroma 는 자기 배경색(#0d1117)을 들고 오는데,
+     감싸고 나면 선택자가 style.css 의 `.prose .chroma` 보다 강해져서 그쪽이 진다.
+     그러면 코드 블록만 사이트 팔레트에서 떨어져 나온다. 감싼 안쪽에서 다시 덮는다 */}}
+{{ $chromaDark := resources.Get "css/chroma-dark.css" }}
+{{ $darkBlock := printf "%s\n.prose .chroma { background: var(--code-bg); }\n" $chromaDark.Content }}
+{{ $chromaDark = printf ":root[data-theme=\"dark\"] {\n%s}\n@media (prefers-color-scheme: dark) {\n:root:not([data-theme=\"light\"]) {\n%s}\n}\n" $darkBlock $darkBlock | resources.FromString "css/chroma-dark-scoped.css" }}
+
+{{ with slice $style $chroma $chromaDark | resources.Concat "css/site.css" }}
   {{ $css := . | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{ end }}

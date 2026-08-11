@@ -2,12 +2,37 @@
    서브도메인이라 오가는 사람이 같은 사이트로 느껴야 한다.
    본문용으로 --code-bg 하나만 새로 넣었다 */
 :root {
+  /* 스크롤바와 기본 폼 요소도 같이 따라오게 한다. 빠뜨리면 어두운 화면에
+     스크롤바만 하얗게 남는다. 아래 light-dark() 가 보는 값이기도 하다 */
+  color-scheme: light dark;
+
+  /* light-dark() 를 모르는 브라우저(2024년 이전)가 받는 값. 무시되는 게
+     아니라 뒤 선언이 이기는 구조라, 옛 브라우저는 라이트로만 보인다 */
   --bg: #faf9f7;
   --text: #1c1c1a;
   --text-sub: #6b6a66;
   --line: #e5e3de;
   --code-bg: #f3f1ed;
+
+  /* 다크 값은 elkiss.me 와 같다. 검정이 아니라 따뜻한 쪽으로 내리는데,
+     라이트가 순백이 아닌 미색이라 여기서 중성 회색으로 가면 짝이 안 맞는다.
+     --code-bg 만 짝이 없어서 elkiss.me 의 --card 를 가져왔다 —
+     바닥보다 한 단계 밝은 면이라는 점에서 같은 자리의 값이다.
+
+     light-dark() 는 위 color-scheme 이 어느 쪽으로 풀리는지를 보고 고른다.
+     그래서 같은 값을 미디어쿼리와 [data-theme] 두 군데에 적지 않아도 된다.
+     두 군데 있는 값은 언젠가 어긋난다 */
+  --bg: light-dark(#faf9f7, #141412);
+  --text: light-dark(#1c1c1a, #f2f0eb);
+  --text-sub: light-dark(#6b6a66, #97948d);
+  --line: light-dark(#e5e3de, #302f2b);
+  --code-bg: light-dark(#f3f1ed, #1c1b19);
 }
+
+/* 토글이 고른 값. 기본은 OS 설정이고 이 속성이 붙었을 때만 덮어쓴다.
+   color-scheme 하나만 뒤집으면 위 light-dark() 가 전부 따라온다 */
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
 * { box-sizing: border-box; }
 
@@ -32,7 +57,14 @@ body {
 
 /* ── 머리·꼬리 ───────────────────────────────── */
 
-.site-head { padding-top: 40px; padding-bottom: 32px; }
+.site-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 40px;
+  padding-bottom: 32px;
+}
 
 .site-name {
   font-size: 17px;
@@ -42,6 +74,37 @@ body {
   text-decoration: none;
   border: 0;
 }
+
+/* 화면 밝기 토글. 워드마크보다 눈에 덜 띄어야 한다 — 글을 읽으러 온 사람에게
+   먼저 보여야 할 것은 아니고, 필요할 때 찾을 수 있으면 된다 */
+.theme-toggle {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--text-sub);
+  cursor: pointer;
+}
+
+.theme-toggle:hover { color: var(--text); background: var(--code-bg); }
+
+/* 키보드로 왔을 때는 보여야 한다. 마우스 클릭에는 테두리가 남지 않는다 */
+.theme-toggle:focus-visible { outline: 2px solid var(--text-sub); outline-offset: 2px; }
+
+.theme-toggle svg { display: block; }
+
+/* 지금 화면과 반대쪽 아이콘을 보여준다. 버튼은 현재 상태가 아니라
+   누르면 무엇이 되는지를 말해야 한다.
+   data-theme 은 스크립트가 언제나 채우므로 미디어쿼리는 필요 없다 */
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
 .site-foot {
   margin-top: 64px;
@@ -180,9 +243,15 @@ body {
 }
 
 /* chroma.css 가 .chroma 에 자기 배경색을 깔고 온다. 그대로 두면 코드 블록만
-   사이트 팔레트에서 떨어져 나오므로 지우고 --code-bg 를 쓰게 한다.
-   생성 파일을 고치는 대신 여기서 덮는다 — 다시 생성해도 이 규칙이 살아남는다 */
-.prose .chroma { background: none; }
+   사이트 팔레트에서 떨어져 나오므로 --code-bg 로 덮는다.
+   생성 파일을 고치는 대신 여기서 덮는다 — 다시 생성해도 이 규칙이 살아남는다.
+
+   `none` 이 아니라 --code-bg 를 다시 지정하는 이유가 있다. 강조된 블록은
+   <pre class="chroma"> 라서 .chroma 가 곧 그 pre 다. `none` 으로 지우면
+   위의 `.prose pre` 규칙보다 선택자가 강해서(클래스 대 요소) 배경이 아예
+   사라지고, 강조된 블록만 배경 없이 테두리만 남는다.
+   라이트에서는 두 색 차이가 작아 눈에 안 띄지만 다크에서는 드러난다 */
+.prose .chroma { background: var(--code-bg); }
 
 /* ── 표 ──────────────────────────────────────── */
 
