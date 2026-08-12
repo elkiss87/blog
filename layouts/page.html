@@ -2,7 +2,10 @@
   <article class="post">
     <header class="post-head">
       <h1 class="page-title">{{ .Title }}</h1>
-      {{/* 기술 글은 언제 쓴 것인지가 내용의 일부다 (docs/PLAN.md §5) */}}
+      {{/* 기술 글은 언제 쓴 것인지가 내용의 일부다 (docs/PLAN.md §5).
+           front matter 에 date 를 적은 페이지에만 붙는다. 소개는 안 적었으니 안 뜨고,
+           시안 문서는 적었으니 뜬다 — 시안은 글의 레이아웃을 재는 자라서
+           글에 있는 것이 다 보여야 한다 */}}
       {{ with .Date }}
         <time class="post-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
       {{ end }}
@@ -14,8 +17,12 @@
     </div>
   </article>
 
-  <nav class="post-nav">
-    {{ with .PrevInSection }}<a class="prev" href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
-    {{ with .NextInSection }}<a class="next" href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
-  </nav>
+  {{/* 이전 / 다음도 글 목록 안에서만 뜻이 있다. 최상위 페이지(소개, 시안)에 붙이면
+       서로를 이전 글로 가리키게 된다 — 둘은 이어지는 글이 아닌데도 */}}
+  {{ if eq .Section "posts" }}
+    <nav class="post-nav">
+      {{ with .PrevInSection }}<a class="prev" href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
+      {{ with .NextInSection }}<a class="next" href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+    </nav>
+  {{ end }}
 {{ end }}

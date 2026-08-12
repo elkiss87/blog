@@ -75,6 +75,23 @@ body {
   border: 0;
 }
 
+/* 워드마크 반대쪽. 소개 링크와 토글이 한 덩어리로 붙어 다닌다 */
+.site-nav {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 14px;
+}
+
+.site-nav > a {
+  font-size: 14px;
+  color: var(--text-sub);
+  text-decoration: none;
+  border: 0;
+}
+
+.site-nav > a:hover { color: var(--text); }
+
 /* 화면 밝기 토글. 워드마크보다 눈에 덜 띄어야 한다 — 글을 읽으러 온 사람에게
    먼저 보여야 할 것은 아니고, 필요할 때 찾을 수 있으면 된다 */
 .theme-toggle {
