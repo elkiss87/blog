@@ -298,6 +298,51 @@ body {
 .prose th, .prose td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; }
 .prose th { background: var(--code-bg); font-weight: 600; }
 
+/* ── 각주 ────────────────────────────────────── */
+
+/* Hugo(Goldmark)가 기본으로 만들어준다. 마크다운에 [^이름] 을 쓰면
+   본문에 <sup class="footnote-ref">, 글 끝에 .footnotes 목록이 생긴다.
+
+   찾아본 글은 출처를 남긴다는 규칙이 있어서(docs/PLAN.md §5) 각주가 필요했다.
+   글 끝에 자료를 몰아두면 어느 문장의 근거인지가 안 보인다 */
+
+/* 본문 속 번호. 글줄의 흐름을 끊지 않아야 해서 .prose a 의 밑줄을 걷어낸다 */
+.prose .footnote-ref {
+  padding: 0 1px;
+  border: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+
+.prose .footnote-ref:hover { color: var(--text); }
+
+/* 눌러서 뛰어온 자리가 화면 맨 위에 딱 붙으면 어디로 왔는지 알기 어렵다 */
+.prose [id^="fnref"], .prose .footnotes li { scroll-margin-top: 24px; }
+
+/* 글 끝의 목록. 본문보다 작고 흐리게 — 읽는 흐름의 바깥이다.
+   위쪽 구분선은 Goldmark 가 넣는 <hr> 이라 .prose hr 이 그린다 */
+.prose .footnotes {
+  margin-top: 48px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-sub);
+}
+
+.prose .footnotes ol { margin: 0; padding-left: 20px; }
+.prose .footnotes li { margin: 10px 0; }
+.prose .footnotes p { margin: 0; }
+
+/* 뛰어온 각주를 잠깐 짚어준다. 목록이 길면 몇 번으로 왔는지 눈으로 못 찾는다.
+   box-shadow 로 여백을 주는 것은 padding 과 달리 자리를 밀지 않기 때문이다 */
+.prose .footnotes li:target {
+  background: var(--code-bg);
+  border-radius: 4px;
+  box-shadow: 0 0 0 6px var(--code-bg);
+}
+
+.prose .footnote-backref { border: 0; }
+
 /* ── 이전 / 다음 ─────────────────────────────── */
 
 .post-nav {
