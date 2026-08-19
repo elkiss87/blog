@@ -79,7 +79,7 @@ Actions 문제인지 구분이 안 된다. HTML 하나면 안 뜰 때 원인이 
 | 커밋 이메일 | `user.email` 을 noreply 주소로 로컬 설정 완료 |
 | 대문 | **글 목록.** Hugo 가 루트를 가져갔다 (2026-08-14). 공사중 `index.html` 은 지웠다 |
 | 페이지 | 소개 `/about/` — `content/about.md`. 목록·RSS 에서 빠진다 |
-| 시안 | `/pangram/` — 레이아웃을 재는 자. 목록에 없고 로컬에서만 링크가 뜬다 |
+| 시안 | `/sample/` — 레이아웃을 재는 자. 목록에 없고 로컬에서만 링크가 뜬다 |
 | Pages | 켜짐. 배포는 커스텀 Actions (`.github/workflows/deploy.yml`) |
 | 도메인 | `blog.elkiss.me` — CNAME → `elkiss87.github.io`, DNS only. HTTPS 정상. `CNAME` 은 `static/` 에 |
 | 스택 | **Hugo 0.164.0 (표준 빌드).** 테마 없이 `layouts/` 직접 |
@@ -285,7 +285,7 @@ front matter 에 `date` 를 안 적어서 날짜도 안 붙는다 — **글이 �
 **최상위에 예약된 이름** — 글 파일명으로 쓰면 안 된다.
 
 ```
-about  posts  tags  categories  page  search  css  pangram
+about  posts  tags  categories  page  search  css  sample
 index  index.xml  sitemap.xml  robots.txt  404.html  favicon.svg  CNAME
 ```
 
@@ -294,8 +294,23 @@ index  index.xml  sitemap.xml  robots.txt  404.html  favicon.svg  CNAME
 
 ### 시안 문서는 글이 아니다
 
-`content/pangram.md` 는 발행할 글이 아니라 **레이아웃을 재는 자다.**
-`content/posts/` 밖에 두고 목록·RSS·sitemap 에서 뺐다. 주소(`/pangram/`)로는 열린다.
+`content/sample.md` 는 발행할 글이 아니라 **레이아웃을 재는 자다.**
+`content/posts/` 밖에 두고 목록·RSS·sitemap 에서 뺐다. 주소(`/sample/`)로는 열린다.
+
+**이름을 `pangram` 에서 `sample` 로 바꿨다** (2026-08-19). 그 문서는 팬그램 문서가 아니라
+자이고, 팬그램은 그 안의 한 절일 뿐이다. 첫 글 주소가 `/pangram-lorem-ipsum/` 이라
+둘이 헷갈리기도 했다. **가리키는 링크가 하나도 없을 때라 공짜로 바꿀 수 있었다** —
+홈의 링크는 `hugo.IsServer` 라 로컬에서만 뜨고, sitemap·RSS·목록에도 없었다.
+
+위 §4 의 `/sample/` 은 **다른 것을 가리킨다.** 2차 목표를 하던 동안 목록·본문 한 벌을
+얹어두던 폴더였고, 대문을 Hugo 로 넘기면서 사라졌다.
+
+**첫 글에서 시안으로 링크를 걸었다** (2026-08-19). 첫 글이 그 문서 이야기라 제일 자연스러운
+자리다. 도입이 아니라 마지막 절에 걸었다 — 도입에 걸면 읽다 말고 나간다.
+
+링크가 생기면서 크롤러가 따라올 길이 생겼으므로 **`noindex, follow` 를 준다.**
+읽으라고 쓴 글이 아니라서 검색 결과에 뜰 물건은 아니지만, `nofollow` 까지 주면
+그 문서가 가리키는 진짜 글까지 같이 묻힌다. front matter 의 `params.noindex` 로 켠다.
 CSS 를 고칠 때마다 다시 열어보는 용도라 남겨둔다.
 
 ### 화면 — 한쪽을 우선하지 않는다

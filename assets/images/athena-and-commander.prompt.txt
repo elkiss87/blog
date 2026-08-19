@@ -1,0 +1,49 @@
+# athena-and-commander
+# 2026-08-19 · ChatGPT 이미지 생성
+#
+# 새 대화에 아래 전문을 그대로 넣어서 나온 그림이다.
+# 앞선 판에는 십자가 목걸이가 있었고 키 차이가 컸다. 그 둘을 고친 것이 이 전문이다.
+#
+# 부정 프롬프트 칸이 없는 도구라 금지를 전부 긍정 서술로 녹였다 → docs/ILLUST.md §9
+# 문구와 결과가 어긋나는 자리가 있다. 프롬프트는 2.5등신인데 실제로는 4~5등신으로 나온다.
+# 그래도 고치지 않는다 — 이 문구가 이 그림을 만들었다 → docs/ILLUST.md §12
+
+Draw a wide landscape illustration (about 3:2), showing two characters
+standing side by side, in loose pencil sketch style.
+
+On the left, Athena: a cute 2.5-head-tall SD chibi girl with shoulder-length
+wavy hair and a small Corinthian helmet worn like a hat, tilted back so her
+whole face is visible. Large round curious eyes. She wears a short sleeveless
+Greek chiton dress with a shoulder brooch and a waist cord, and simple
+sandals. A palm-sized round owl is perched on her shoulder. She holds up a
+single sheet of paper toward her companion, looking up at him with her head
+tilted, asking something. The writing on the paper is drawn as wavy squiggle
+lines, not readable letters.
+
+On the right, the Commander: a cute 2.5-head-tall SD chibi young man in the
+same proportions and style, standing barely taller than her — their heads at
+almost the same level. Clean-shaven and youthful, clearly slim and lightly
+built with narrow shoulders and thin limbs — only his face is round, with
+soft full cheeks. Short hair parted 6:4 to one side with softly flicked ends.
+Round thin metal-rimmed glasses, the frame drawn in plain grey line and left
+uncolored. Large gentle eyes with slightly downturned outer corners and an
+easy warm smile. He wears a neat fitted cleric robe with a broad collar and a
+waist cord, and a short stole with tasseled ends and an embroidered hem
+border. At his collar he wears only a plain small round medallion — no cross,
+and no religious symbol of any kind anywhere on him or his clothing. In his
+far hand, on the outer edge of the frame, he holds a tall ornate wooden staff
+crowned with an armillary sphere — interlocking metal rings around a small
+central orb. He listens to her with a warm smile, nodding slightly.
+
+Both characters are shown full body, standing close together and facing
+slightly toward each other, with generous empty space above and around them.
+Make the background fully transparent if possible; otherwise use a plain flat
+white background. No scenery and no ground shadow.
+
+Style: loose pencil sketch, monochrome graphite line art with light hatching.
+The entire drawing is grayscale EXCEPT two accent colors, kept strictly
+separate. Warm gold (#c9a227) appears ONLY on Athena's helmet and shoulder
+brooch. Warm vermilion (#b8412e) appears ONLY on the Commander's stole trim,
+his tasseled cord, and the central orb of his staff. Never put gold on the
+Commander or vermilion on Athena. Everything else, including both characters'
+hair and his glasses, stays grey. No writing or lettering anywhere.

@@ -65,6 +65,12 @@
 <meta name="description" content="{{ $desc | plainify | truncate 160 }}">
 <link rel="canonical" href="{{ .Permalink }}">
 
+{{/* 검색에서 빼되 링크는 따라가게 한다. 시안처럼 주소로는 열려야 하지만
+     검색 결과에 뜰 물건은 아닌 페이지에 쓴다.
+     noindex 만 쓰고 nofollow 를 안 쓰는 이유는, 그 페이지가 가리키는
+     진짜 글까지 같이 묻히면 안 되기 때문이다 */}}
+{{ if .Params.noindex }}<meta name="robots" content="noindex, follow">{{ end }}
+
 <link rel="icon" href="{{ "favicon.svg" | absURL }}" type="image/svg+xml">
 
 {{/* 모바일 브라우저 주소창 색. 페이지 배경과 맞춰야 경계선이 안 생긴다.
