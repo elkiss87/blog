@@ -1,0 +1,63 @@
+{{/* 이미지 렌더 훅.
+
+     마크다운의 ![대체 텍스트](경로 "캡션") 을 가로채 <figure> 로 내보낸다.
+     숏코드를 쓰지 않는 이유는 마크다운을 평범한 채로 두기 위해서다 —
+     나중에 스택을 옮겨도 글이 안 깨진다 (docs/PLAN.md §6).
+
+     쓰는 법:
+       ![아테나와 지휘관](images/athena-and-commander.png "묻는 쪽과 답하는 쪽")
+
+     캡션을 빼면 <figure> 없이 <img> 하나만 나간다.
+     딸린 설명이 없는 그림에 figure 를 두르면 의미만 늘고 보이는 것은 같다.
+
+     그림은 assets/images/ 에 둔다. static/ 에 두면 Hugo 가 손대지 않고 그대로
+     복사만 해서 원본이 그대로 나간다. 연필 질감은 무손실 압축이 안 먹어서
+     PNG 한 장이 사이트 전체보다 무겁다 — assets/ 에 있어야 줄일 수 있다. */}}
+
+{{- $src := strings.TrimPrefix "/" .Destination -}}
+{{- $res := resources.Get $src -}}
+
+{{/* 줄일 수 있는 것만 줄인다.
+
+     SVG 는 크기를 재는 개념이 없어 그대로 두고, 외부 주소나 없는 파일은
+     원래 경로로 내보내 빌드가 멈추지 않게 한다 — 그림 한 장 때문에
+     사이트 전체가 안 나가는 것이 제일 나쁘다. */}}
+{{- $img := "" -}}
+{{- with $res -}}
+  {{- if eq .MediaType.SubType "svg" -}}
+    {{- $img = . -}}
+  {{- else if gt .Width 1440 -}}
+    {{/* 본문 폭이 720px 이라 2배까지만 받는다. 그 위는 화면에서 못 쓰는 픽셀이다.
+         q85 는 선화 기준이다. 더 내리면 연필 해칭이 뭉개져 지저분해진다 */}}
+    {{- $img = .Resize "1440x webp q85" -}}
+  {{- else -}}
+    {{- $img = .Process "webp q85" -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $url := .Destination -}}
+{{- $w := 0 -}}
+{{- $h := 0 -}}
+{{- with $img -}}
+  {{- $url = .RelPermalink -}}
+  {{- if ne .MediaType.SubType "svg" -}}
+    {{- $w = .Width -}}
+    {{- $h = .Height -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* width·height 를 적어두면 그림이 도착하기 전에도 브라우저가 자리를 비워둔다.
+     안 적으면 이미지가 늦게 뜰 때 아래 글이 밀려 내려가면서 읽던 줄을 놓친다 */}}
+{{- $attrs := printf `src=%q alt=%q loading="lazy" decoding="async"` $url .Text -}}
+{{- if $w -}}
+  {{- $attrs = printf `%s width="%d" height="%d"` $attrs $w $h -}}
+{{- end -}}
+
+{{- if and .Title .IsBlock -}}
+<figure>
+  <img {{ $attrs | safeHTMLAttr }}>
+  <figcaption>{{ .Title }}</figcaption>
+</figure>
+{{- else -}}
+<img {{ $attrs | safeHTMLAttr }}>
+{{- end -}}

@@ -72,18 +72,25 @@
 
 ---
 
-## 4. 배경 — 흰색으로 뽑아서 투명으로 뺀다
+## 4. 배경은 투명으로 받는다
 
-생성은 순백 배경으로 하고, 받아서 **흰색을 빼 투명 PNG 로 저장한다.**
+**프롬프트에서 투명 배경을 요청하면 그대로 나온다** (2026-08-19 확인).
+받아서 흰색을 빼는 후처리가 필요 없었다.
 
 흰 배경 그림을 그대로 쓰면 다크 화면에서 판이 번쩍인다 → [PLAN.md](PLAN.md) §6.
-스케치 선화는 배경이 깔끔하게 떨어져서, 라이트에서는 미색 위에 다크에서는 검정 위에
-선만 남는다.
+투명이면 라이트에서는 미색 위에, 다크에서는 검정 위에 그림만 남는다.
 
-- 배경에 회색 기가 돌면 투명으로 뺄 때 테두리에 얼룩이 남는다. **순백인지 확인한다**
 - **바닥 그림자를 넣지 말라고 명시한다.** 모델이 요청 없이도 자주 그린다
-- 다크에서 선을 반전시킬지는 실물을 보고 정한다. 반전하더라도 **포인트 색은 그대로 둔다**
-- 파일은 `static/images/` 에. 파일명은 글 주소와 같은 규칙 — 영문 소문자와 하이픈
+- 투명이 안 되면 순백으로 받아서 흰색을 뺀다. 배경에 회색 기가 돌면
+  테두리에 얼룩이 남으니 **순백인지 확인한다**
+- **파일은 `assets/images/` 에 둔다.** `static/` 에 두면 Hugo 가 손을 못 대서
+  원본이 그대로 나간다. 파일명은 글 주소와 같은 규칙 — 영문 소문자와 하이픈
+- 용량은 **빌드가 줄인다.** 렌더 훅이 `1440x webp q85` 로 변환한다.
+  손으로 줄일 일이 없다 → `layouts/_markup/render-image.html`
+
+**다크모드 걱정은 해소됐다.** 첫 그림을 재보니 그림 영역의 62%가 투명이고
+밝은 픽셀은 화면의 17%뿐이었다. 선을 반전시키거나 테두리를 두를 필요가 없다.
+**흰 옷이 넓은 그림이 들어오면 그때 다시 잰다.**
 
 ---
 
@@ -306,8 +313,14 @@ lettering anywhere in the image.
 ```
 
 - **마음에 드는 것이 나오면 그 이미지를 첨부해서** 다음 컷을 뽑는다. 일관성은 여기서 나온다
-- 비율·크기는 프롬프트가 아니라 **설정에서 고른다.** 3:4 는 없고 세로가 2:3 쯤이다
-- **투명 배경을 직접 요청해본다.** 되면 §4 의 후처리가 없어진다
+- **비율도 배경도 프롬프트에 말로 적는다.** `Draw a wide landscape illustration
+  (about 3:2)` 처럼 첫 줄에 넣으면 된다. 설정에서 고를 필요가 없다
+- **투명 배경을 프롬프트에서 요청한다.** `Make the background fully transparent if
+  possible; otherwise use a plain flat white background` — 되면 §4 의 후처리가
+  없어지고, 안 되면 흰 배경으로 나와서 어차피 손해가 없다
+
+**두 캐릭터를 한 컷에 그릴 때는 참조 이미지를 둘 다 첨부한다.** 프롬프트만으로 두 명을
+그리면 모델이 얼굴을 섞는다. 그래서 **단독 컷을 먼저 뽑아두는 것이 순서다.**
 
 ---
 
@@ -347,7 +360,63 @@ lettering anywhere in the image.
 
 ---
 
-## 12. 아직 정하지 않은 것
+## 12. 그린 것 — 기록
+
+| 파일 | 컷 | 생성 |
+|---|---|---|
+| `assets/images/athena-and-commander.png` | 둘이 나란히 — 소개 페이지용 | 2026-08-19 · GPT |
+
+원본 1536×1024, 투명 PNG, 2.28MB. 빌드가 264KB WebP 로 줄인다.
+
+### `athena-and-commander` 의 D·E 블록
+
+§7 까지의 A·B·C 를 두 캐릭터 몫으로 각각 넣고, 뒤에 이것을 붙인다.
+
+```text
+Athena holds up a single sheet of paper toward her companion, looking up at
+him with her head tilted, asking something. The writing on the paper is drawn
+as wavy squiggle lines, not readable letters. The Commander stands barely
+taller than her — their heads at almost the same level — listening with a
+warm smile, nodding slightly, his staff in his far hand on the outer edge of
+the frame.
+
+Draw it as a wide landscape illustration (about 3:2), both characters shown
+full body, standing close together and facing slightly toward each other,
+with generous empty space above and around them.
+```
+
+**포인트 지정은 둘을 함께 적고, 서로 넘어가지 말라고 분명히 적는다.**
+
+```text
+Warm gold (#c9a227) appears ONLY on Athena's helmet and shoulder brooch.
+Warm vermilion (#b8412e) appears ONLY on the Commander's stole trim, his
+tasseled cord, and the central orb of his staff. Never put gold on the
+Commander or vermilion on Athena.
+```
+
+### 프롬프트와 결과가 어긋나는 자리
+
+**프롬프트는 `2.5-head-tall` 인데 실제로는 4~5등신으로 나온다.**
+그림체도 "성긴 연필 스케치" 라고 적었지만 실제로는 꽤 정교하게 렌더링된다.
+
+**어긋난 문구를 고치지 않는다.** 그 문구가 그 결과를 만들었기 때문이다.
+숫자를 실물에 맞춰 `4-head-tall` 로 바꾸면 다른 그림이 나온다.
+**프롬프트는 설명이 아니라 손잡이다** — 결과가 좋으면 문구는 그대로 둔다.
+
+십자가는 예외였다. `no cross or religious insignia` 를 적었는데도 나왔고,
+이어서 고치기로 뺐다 → §9.
+
+### 갤러리는 만들지 않는다
+
+PLAN §5 가 "페이지는 셋으로 시작한다" 다. 갤러리는 네 번째 페이지고 지금 그림이 한 장이다.
+
+**만드는 조건 — 쓰지 않은 컷까지 열 장이 넘고, 글에서 보여줄 자리가 없을 때.**
+그 전까지는 그림이 글 안에 있는 것이 맞다. 캐릭터 페이지 때와 같은 방식으로
+조건을 먼저 적어둔다.
+
+---
+
+## 13. 아직 정하지 않은 것
 
 - **다크모드에서 선을 반전시킬 것인가** → §4
 - **`og:image` 를 글마다 줄 것인가** → §10
