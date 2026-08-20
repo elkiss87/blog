@@ -1,0 +1,56 @@
+이 저장소에는 사이트를 만드는 **코드**와 사이트에 실리는 **글·삽화**가 함께 있습니다.
+둘의 적용 범위가 다릅니다.
+
+## MIT 라이선스 — 코드
+
+    layouts/        템플릿과 렌더 훅
+    assets/css/     스타일시트
+    hugo.toml       설정
+    .github/        배포 워크플로
+
+가져다 쓰셔도 됩니다. 아래 MIT 라이선스 전문이 적용됩니다.
+
+## 저작권 유지 — 글
+
+    content/    글과 페이지
+    docs/       작업 문서
+
+허락 없이 복제·재발행·2차 저작물 작성을 하지 않습니다.
+인용은 출처를 밝히면 됩니다.
+
+글은 AI 와 함께 씁니다. 무엇을 쓸지와 무엇이 맞는지는 글쓴이가 정하고 확인하며,
+문장을 다듬는 데 AI 를 씁니다. **도구로 쓴 것이므로 저작물입니다.**
+
+## 가져가기 전에 물어봐 주세요 — 삽화
+
+    assets/images/    삽화와 프롬프트
+
+**삽화는 AI 로 생성했습니다.** 그런 이미지에 저작권이 어디까지 붙는지는
+아직 나라마다 정리되는 중이고, 여기서 그것을 세게 주장하지 않겠습니다.
+
+다만 캐릭터 설정과 프롬프트는 이 블로그를 위해 만든 것이고,
+그 캐릭터가 이 블로그의 얼굴입니다. 가져다 쓰실 일이 있으면 먼저 물어봐 주세요.
+
+---
+
+MIT License
+
+Copyright (c) 2026 elkiss87
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
