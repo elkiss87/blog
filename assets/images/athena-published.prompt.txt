@@ -1,0 +1,39 @@
+# athena-published
+# 2026-08-21 · ChatGPT 이미지 생성
+#
+# 「시안에 넣은 글이 그대로 발행돼 있었습니다」 절의 그림.
+#
+# 원래 이 자리에는 athena-sieve(체 구멍으로 모음이 새는 그림)를 넣으려 했다가 접었다.
+# 체도 상징이고 떨어지는 획도 상징이라 은유가 두 겹이었고, "뭔가 빠진다"까지는 보여도
+# "모음이 빠진다"가 안 읽혔다. 그림이 정보를 나르려면 구체적인 사물과 상황이어야 한다.
+#
+# 부정 프롬프트 칸이 없는 도구라 금지를 전부 긍정 서술로 녹였다 → docs/ILLUST.md §9
+#
+# 결과에서 프롬프트와 어긋난 것: "no other scenery at all" 이라고 적었는데 화분과
+# A자 입간판이 붙어 나왔다. 빼지 않았다 — 가게가 멀쩡히 굴러간다는 인상을 오히려 살린다.
+
+Draw a wide landscape illustration (about 3:2), in loose pencil sketch style.
+
+A cute 2.5-head-tall SD chibi girl named Athena: shoulder-length wavy hair and
+a small Corinthian helmet worn like a hat, tilted back so her whole face is
+visible. Large round eyes. She wears a short sleeveless Greek chiton dress
+with a shoulder brooch and a waist cord, and simple sandals. A palm-sized
+round owl is perched on her shoulder.
+
+She stands in front of a small tidy storefront, drawn with just a few clean
+outline strokes — a door, a window, and a sign board mounted above them. The
+building looks perfectly normal and well kept. But the sign board is filled
+edge to edge with wavy squiggle lines instead of a name, and so is the notice
+taped inside the window. She stares up at the sign with both hands raised near
+her face and her mouth open in surprise. The owl's eyes are wide open too.
+
+Both she and the storefront sit centered in the frame with generous empty
+space around them, and there is no other scenery at all. Make the background
+fully transparent if possible; otherwise use a plain flat white background. No
+ground shadow.
+
+Style: loose pencil sketch, monochrome graphite line art with light hatching.
+The entire drawing is grayscale EXCEPT one warm gold accent (#c9a227), used
+only on three things — her helmet, her shoulder brooch, and the outer frame of
+the sign board. Everything else, including her hair, the owl, and the building,
+stays grey. No writing or lettering anywhere in the image.

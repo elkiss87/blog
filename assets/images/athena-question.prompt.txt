@@ -1,0 +1,33 @@
+# athena-question
+# 2026-08-21 · ChatGPT 이미지 생성
+#
+# 「시안에 넣은 문장들이 궁금했습니다」의 도입 그림.
+# athena-and-commander.png 를 참조 이미지로 첨부하고 뽑았다 — 아테나 얼굴이
+# 거기서 이미 정해졌기 때문이다. 안 붙이면 같은 글 안에서 얼굴이 두 번 바뀐다.
+#
+# 부정 프롬프트 칸이 없는 도구라 금지를 전부 긍정 서술로 녹였다 → docs/ILLUST.md §9
+# 문구는 2.5등신인데 실제로는 4~5등신으로 나온다. 고치지 않는다 → docs/ILLUST.md §12
+
+Draw a wide landscape illustration (about 3:2) of a single character, in loose
+pencil sketch style.
+
+A cute 2.5-head-tall SD chibi girl named Athena: shoulder-length wavy hair and
+a small Corinthian helmet worn like a hat, tilted back so her whole face is
+visible. Large round curious eyes. She wears a short sleeveless Greek chiton
+dress with a shoulder brooch and a waist cord, and simple sandals. A
+palm-sized round owl is perched on her shoulder.
+
+She holds three sheets of paper fanned out in one hand and looks up at them
+with wide curious eyes, her head tilted to one side. The writing on the papers
+is drawn as wavy squiggle lines, not readable letters. The owl tilts its head
+in the same direction as hers. A small question mark floats above her head.
+
+She stands centered in the frame with generous empty space around her. Make
+the background fully transparent if possible; otherwise use a plain flat white
+background. No scenery and no ground shadow.
+
+Style: loose pencil sketch, monochrome graphite line art with light hatching.
+The entire drawing is grayscale EXCEPT one warm gold accent (#c9a227), used
+only on three things — her helmet, her shoulder brooch, and the floating
+question mark. Everything else, including her hair and the owl, stays grey.
+No writing or lettering anywhere in the image.

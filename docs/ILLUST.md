@@ -156,21 +156,30 @@ never any weapon.
 
 절이 여덟 개라 전부 넣으면 과하다. **★ 둘을 먼저 뽑는다** → §10.
 
-| | 파일명 | 들어갈 자리 |
-|---|---|---|
-| ★ | `athena-question` | 도입 |
-| | `athena-box-and-tag` | 하나는 분류, 하나는 이름 |
-| | `athena-lens-and-fog` | 방법은 반대인데 하는 일은 같다 |
-| | `athena-cut-word` | Lorem은 단어가 아니었다 |
-| ★ | `athena-sieve` | 한글에서는 팬그램이 성립하지 않는다 |
-| | `athena-published` | 시안에 넣은 글이 그대로 발행돼 있었다 |
-| | `athena-new-ruler` | 그래서 자를 바꿨다 |
+| | 파일명 | 들어갈 자리 | |
+|---|---|---|---|
+| ★ | `athena-question` | 도입 | **넣었다** (2026-08-21) |
+| | `athena-box-and-tag` | 하나는 분류, 하나는 이름 | |
+| | `athena-lens-and-fog` | 방법은 반대인데 하는 일은 같다 | |
+| | `athena-cut-word` | Lorem은 단어가 아니었다 | |
+| | ~~`athena-sieve`~~ | 한글에서는 팬그램이 성립하지 않는다 | **접었다** — 아래 |
+| ★ | `athena-published` | 시안에 넣은 글이 그대로 발행돼 있었다 | **넣었다** (2026-08-21) |
+| | `athena-new-ruler` | 그래서 자를 바꿨다 | |
 
 `athena-question` 은 **`og:image` 후보**다. 얼굴이 정면에 가깝고 표정이 또렷한 것으로
 고른다 — 미리보기에서 작게 떠도 살아남아야 한다.
 
-`athena-sieve` 가 **유일하게 정보를 나르는 컷**이다. 체 구멍으로 모음이 새는 그림은
-글보다 빠르게 이해된다. 나머지는 본문을 그림으로 다시 말하는 것이라 성격이 다르다.
+**`athena-sieve` 를 접었다** (2026-08-21). 체 구멍으로 모음이 새는 그림이 "유일하게
+정보를 나르는 컷" 이라고 적어뒀는데, 실제로 뽑아보니 아니었다.
+
+**은유가 두 겹이었다.** 체도 상징이고 떨어지는 획도 상징이라, 보는 사람이
+"뭔가 빠진다" 까지는 알아도 **"모음이 빠진다" 는 안 읽혔다.**
+
+그 자리를 `athena-published` 가 대신했다. 건물·간판·놀란 표정이 전부 구체적이라
+해독할 것이 없고, **간판이 물결선이라는 사실 자체가 곧 요지**다.
+
+> **그림이 정보를 나르려면 구체적인 사물과 상황이어야 한다.**
+> 상징을 겹치면 예쁜 그림은 나와도 뜻은 안 실린다.
 
 ### D 블록 — 컷별
 
@@ -183,7 +192,8 @@ is drawn as wavy squiggle lines, not readable letters. The owl tilts its head
 in the same direction as hers. A small floating question mark above her head.
 ```
 
-**`athena-sieve`** — 포인트: `the seven small falling stroke-shaped pieces`
+**`athena-sieve`** — **접었다.** 뽑아봤지만 뜻이 안 실렸다. 위 컷 목록 참고.
+지우지 않고 남긴다 — **같은 종류의 실패를 다시 하지 않으려면 실패한 것이 남아 있어야 한다.**
 
 ```text
 She holds a round kitchen sieve above her head with both hands, tipped
@@ -366,11 +376,19 @@ lettering anywhere in the image.
 
 ## 12. 그린 것 — 기록
 
-| 파일 | 컷 | 생성 |
-|---|---|---|
-| `assets/images/athena-and-commander.png` | 둘이 나란히 — 소개 페이지용 | 2026-08-19 · GPT |
+셋 다 1536×1024 (3:2), 투명 PNG 다.
 
-원본 1536×1024, 투명 PNG, 2.28MB. 빌드가 264KB WebP 로 줄인다.
+| 파일 | 자리 | 생성 | 원본 → 배포 |
+|---|---|---|---|
+| `athena-and-commander.png` | 소개 페이지 | 2026-08-19 | 2.28MB → 268KB |
+| `athena-question.png` | 첫 글 도입 | 2026-08-21 | 1.53MB → 128KB |
+| `athena-published.png` | 첫 글 「그대로 발행돼」 | 2026-08-21 | 2.24MB → 236KB |
+
+전부 `assets/images/` 에 있다. 원본 합계 6.1MB 가 배포본에서는 632KB 다.
+
+**다크에서 밝은 면적**(화면 대비, 알파 128 초과 픽셀 중 휘도 200 초과):
+소개 17% · 도입 11% · 발행 32%. **발행 컷이 유독 밝은 것은 흰 건물이 넓어서다.**
+번쩍이는 수준은 아니지만, 흰 면이 넓은 그림이 또 들어오면 그때 다시 잰다.
 
 ### 보낸 전문은 그림 옆에 둔다
 
