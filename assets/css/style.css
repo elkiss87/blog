@@ -299,8 +299,13 @@ body {
 /* 파란색을 쓰지 않으므로 링크는 밑줄 하나로 알려야 한다.
    그래서 밑줄 색이 --line 이면 안 된다 — 표·구분선용 값이라 배경과 1.2:1 이고,
    "옅은" 것이 아니라 안 보인다. 짧은 링크(두 글자짜리)에서는 특히 그렇다.
-   --text-sub 로 올리면 라이트 5:1, 다크 6.5:1 이 되어 글줄 안에서 눈에 걸린다 */
-.prose a { color: var(--text); border-bottom: 1px solid var(--text-sub); }
+   --text-sub 로 올리면 라이트 5:1, 다크 6.5:1 이 되어 글줄 안에서 눈에 걸린다.
+
+   text-decoration 을 꺼야 밑줄이 하나가 된다. 안 끄면 브라우저 기본 밑줄과
+   여기 border-bottom 이 겹쳐 두 줄이 그어진다 (docs/LOG.md 2026-08-22).
+   border 로 그리는 이유는 색과 굵기를 따로 잡을 수 있어서다 —
+   text-decoration-color 로도 되지만 밑줄 위치를 글자에서 떼어놓지 못한다 */
+.prose a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--text-sub); }
 .prose a:hover { border-bottom-color: var(--text); }
 
 .prose hr { margin: 40px 0; border: 0; border-top: 1px solid var(--line); }
