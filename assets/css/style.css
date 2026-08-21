@@ -162,31 +162,86 @@ body {
   letter-spacing: -.01em;
 }
 
-.post-list { margin: 0; padding: 0; list-style: none; }
+/* 항목을 카드로 묶는다.
 
-/* 날짜와 제목을 세로로 쌓는다. 좁은 화면에서 한 줄에 넣으면
-   제목이 접히면서 날짜와 어긋나 읽기 나빠진다 */
-.post-item { padding: 14px 0; border-bottom: 1px solid var(--line); }
+   구분선 하나로는 안 갈렸다. 선(--line)이 배경과 1.2:1 이라 사실상 안 보이는데,
+   커버가 들어오면서 항목이 세로로 길어져 어디서 끊기는지 모르게 됐다.
 
+   카드 배경이 하는 일이 하나 더 있다 — 삽화가 투명 배경이라 그냥 깔면
+   캐릭터 좌우가 텅 비어 허전한데, 그 빈 자리를 카드가 받아준다.
+   따로 배경판을 굽지 않아도 된다 (docs/PLAN.md §5) */
+.post-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.post-item {
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;          /* 커버 위쪽 모서리를 카드 모양대로 깎는다 */
+}
+
+/* 목록의 커버. 화면 읽기 프로그램에서는 건너뛴다 — 바로 아래 제목이 같은 곳을 가리켜서
+   같은 링크를 두 번 읽게 된다. 마크업의 aria-hidden 과 tabindex 가 그 일을 한다 */
+.post-item .post-cover { display: block; }
+.post-item .post-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--line);
+}
+
+/* 제목 링크. 커버를 감싼 링크는 여기서 뺀다 —
+   빼지 않으면 그림에 마우스를 올렸을 때 밑줄이 그어진다.
+
+   17px 에서 21px 로 키웠다. 453px 짜리 커버 아래 17px 제목이면
+   제목이 그림의 캡션처럼 읽힌다. 목록은 제목이 주인공인 자리다 (docs/PLAN.md §5) */
+.post-item a:not(.post-cover) {
+  display: block;
+  margin: 18px 20px 0;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text);
+  border: 0;
+}
+
+.post-item a:not(.post-cover):hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* 요약. 제목보다 물러나야 목록을 훑을 때 제목이 먼저 읽힌다 */
+.post-summary {
+  margin: 8px 20px 0;
+  color: var(--text-sub);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* 날짜는 요약 아래 꼬리표다. 커버와 제목을 떼어놓지 않으려고 내렸다 */
 .post-item time {
   display: block;
+  margin: 10px 20px 18px;
   font-size: 13px;
   color: var(--text-sub);
   font-variant-numeric: tabular-nums;
 }
 
-.post-item a {
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--text);
-  border: 0;
-}
-
-.post-item a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
 /* ── 글 본문 ─────────────────────────────────── */
 
 .post-head { margin-bottom: 36px; }
+
+/* 글 상단의 커버. 목록에 쓰는 것과 같은 파일이고 여기서는 도입 그림 노릇을 한다.
+   본문 바로 위라 아래 여백을 제목 아래와 같은 값으로 맞춘다 */
+.post > .post-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 36px;
+}
 
 .post-date {
   display: block;

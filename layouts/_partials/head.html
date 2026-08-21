@@ -118,7 +118,29 @@
 <meta property="og:description" content="{{ $desc | plainify | truncate 160 }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:locale" content="ko_KR">
-<meta name="twitter:card" content="summary">
 
-{{/* og:image 는 아직 비워둔다. 시안 화면을 미리보기로 걸어두면 글이 생긴 뒤에도
-     그 이미지가 캐시로 남는다. 없는 편이 틀린 것보다 낫다 (docs/LOG.md 2026-08-05) */}}
+{{/* 미리보기 이미지. 08-05 에는 비워뒀다 — 공사중 화면이 캐시로 남는 것보다
+     없는 편이 낫다고 봤다. 삽화가 생겼으므로 이제 건다 (docs/LOG.md 2026-08-05).
+
+     글은 자기 커버를 쓰고, 커버가 없는 곳(대문·소개)은 사이트 기본 그림을 쓴다.
+     목록에서는 기본값으로 넘어가지 않는다 — 거기서는 같은 그림이 늘어서면
+     거짓말이 되지만, 미리보기는 페이지마다 하나씩이라 그럴 일이 없다.
+
+     jpg 로 내보내는 것이 핵심이다. 삽화가 투명 배경이라 그대로 보내면
+     슬랙·카톡이 투명을 검게 칠해서 연필 선이 묻힌다. jpg 는 투명을 못 담으므로
+     Hugo 가 지정한 색으로 채워준다 — 사이트 배경과 같은 미색이다.
+
+     og:image 는 절대 주소여야 한다. 남의 서버가 가져가는 주소라 상대 경로면 안 뜬다 */}}
+{{ $cover := partial "cover.html" . }}
+{{ if not $cover }}
+  {{ with site.Params.cover }}{{ $cover = resources.Get . }}{{ end }}
+{{ end }}
+{{ with $cover }}
+  {{ $og := .Resize "1200x jpg q85 #faf9f7" }}
+  <meta property="og:image" content="{{ $og.Permalink }}">
+  <meta property="og:image:width" content="{{ $og.Width }}">
+  <meta property="og:image:height" content="{{ $og.Height }}">
+  <meta name="twitter:card" content="summary_large_image">
+{{ else }}
+  <meta name="twitter:card" content="summary">
+{{ end }}

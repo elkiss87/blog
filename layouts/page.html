@@ -11,6 +11,15 @@
       {{ end }}
     </header>
 
+    {{/* 목록에 쓰는 커버와 같은 파일이다. 글 안에서는 도입 그림 노릇을 한다.
+         같은 그림을 본문에 또 넣지 않는다 — 한 장이 한 자리에서만 보이게 한다 */}}
+    {{ with partial "cover.html" . }}
+      {{ $c := .Resize "1440x webp q85" }}
+      <img class="post-cover" src="{{ $c.RelPermalink }}"
+           width="{{ $c.Width }}" height="{{ $c.Height }}"
+           alt="{{ $.Params.coverAlt }}" decoding="async">
+    {{ end }}
+
     {{/* 마크다운이 변환된 본문. 여기 안의 태그는 CSS 에서 .prose 로 잡는다 */}}
     <div class="prose">
       {{ .Content }}

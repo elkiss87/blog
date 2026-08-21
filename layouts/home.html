@@ -8,10 +8,31 @@
     <ul class="post-list">
       {{ range . }}
         <li class="post-item">
+          {{/* 커버는 글마다 하나씩 두기로 했다 (docs/PLAN.md §5).
+               예외를 두지 않아야 목록이 들쭉날쭉해지지 않는다.
+               alt 를 비우는 것은 장식이라서다 — 바로 아래 제목이 같은 것을 가리킨다 */}}
+          {{/* 글 주소를 미리 잡아둔다. with 안에서는 . 이 커버 리소스로 바뀌고,
+               $ 는 이 글이 아니라 대문 페이지를 가리켜서 링크가 / 로 나간다 */}}
+          {{ $url := .RelPermalink }}
+          {{ with partial "cover.html" . }}
+            {{ $c := .Resize "1440x webp q85" }}
+            <a class="post-cover" href="{{ $url }}" tabindex="-1" aria-hidden="true">
+              <img src="{{ $c.RelPermalink }}" width="{{ $c.Width }}" height="{{ $c.Height }}"
+                   alt="" loading="lazy" decoding="async">
+            </a>
+          {{ end }}
+
+          {{/* 커버 다음에 제목이 바로 온다. 둘을 붙여야 한 덩어리로 읽힌다.
+               날짜는 꼬리로 내렸다 — 큰 그림과 굵은 제목 사이에 작은 회색 글자가
+               끼면 어느 쪽에 딸린 것인지 애매해진다 */}}
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+
+          {{/* 커버를 넣으면서 요약도 같이 넣는다. 큰 그림 밑에 제목 한 줄만 있으면 허전하다 */}}
+          {{ with .Description }}<p class="post-summary">{{ . }}</p>{{ end }}
+
           {{/* Go 템플릿의 날짜 서식은 "2006-01-02" 라는 기준 시각으로 쓴다.
                yyyy-MM-dd 가 아니다. Go 를 처음 만지면 반드시 한 번 걸리는 자리다 */}}
           <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </li>
       {{ end }}
     </ul>
