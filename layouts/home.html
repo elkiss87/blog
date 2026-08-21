@@ -39,16 +39,4 @@
   {{ else }}
     <p class="note">아직 글이 없습니다.</p>
   {{ end }}
-
-  {{/* 시안으로 들어가는 문. `hugo server` 로 띄웠을 때만 마크업이 생긴다.
-       배포본에서는 대문 index.html 이 이 일을 하고, 여기는 아예 나오지 않는다.
-
-       목록(post-list)에 넣지 않는 이유는 시안이 글이 아니어서다. 목록에 넣으면
-       나중에 대문을 Hugo 로 넘겼을 때 진짜 글들 사이에 시안이 끼어든다 */}}
-  {{ if hugo.IsServer }}
-    <p class="dev-link">
-      <a href="{{ "sample/" | relURL }}">레이아웃 시안 →</a>
-      <span>로컬 미리보기에서만 보인다</span>
-    </p>
-  {{ end }}
 {{ end }}

@@ -27,11 +27,21 @@
   </article>
 
   {{/* 이전 / 다음도 글 목록 안에서만 뜻이 있다. 최상위 페이지(소개, 시안)에 붙이면
-       서로를 이전 글로 가리키게 된다 — 둘은 이어지는 글이 아닌데도 */}}
+       서로를 이전 글로 가리키게 된다 — 둘은 이어지는 글이 아닌데도.
+
+       섹션만 보고 <nav> 를 먼저 그리면 안 된다. 글이 한 편일 때는 이전도 다음도
+       없는데 상자만 남아서 마진 48px 과 자기 padding·border 21px 을 빈 채로 먹고,
+       거기에 구분선까지 그어진다. 그 선은 --line 이라 배경과 1.2:1 이어서 선으로는
+       안 읽히고 빈칸으로만 느껴진다 — 페이지 끝이 소개보다 69px 더 벌어졌었다
+       (docs/LOG.md 2026-08-22). 넣을 것이 있는지를 상자보다 먼저 따진다 */}}
   {{ if eq .Section "posts" }}
-    <nav class="post-nav">
-      {{ with .PrevInSection }}<a class="prev" href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
-      {{ with .NextInSection }}<a class="next" href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
-    </nav>
+    {{ $prev := .PrevInSection }}
+    {{ $next := .NextInSection }}
+    {{ if or $prev $next }}
+      <nav class="post-nav">
+        {{ with $prev }}<a class="prev" href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
+        {{ with $next }}<a class="next" href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+      </nav>
+    {{ end }}
   {{ end }}
 {{ end }}
