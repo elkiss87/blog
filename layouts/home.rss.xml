@@ -1,0 +1,47 @@
+{{/* 대문 피드. Hugo 기본 템플릿을 안 쓰고 손으로 두는 이유가 둘이다.
+
+     하나 — 기본 템플릿은 사이트의 모든 일반 페이지를 담는다. 그래서 소개가
+     글처럼 피드에 실렸고, date 가 없어서 pubDate 가 0001년으로 나갔다.
+     docs/PLAN.md §5 에는 "소개는 목록·RSS 에서 빠진다" 고 적혀 있는데
+     실제로는 목록에서만 빠지고 있었다.
+
+     front matter 의 build.list 로도 뺄 수 있지만 그건 sitemap 에서도 같이
+     빼버린다. 소개는 검색에서 찾아져야 하는 페이지라 그 방법은 못 쓴다.
+
+     둘 — 대문 목록과 피드가 같은 기준을 봐야 한다. 아래 필터는
+     layouts/home.html 이 쓰는 것과 같은 식이다. 한쪽만 고치면 또 어긋난다.
+
+     XML 은 태그 사이의 빈 줄이 문제를 일으키지는 않지만, 주석 때문에 생기는
+     빈 줄은 {{- -}} 로 걷어낸다. 피드는 사람이 열어볼 일도 있는 파일이다. */}}
+{{- $pages := (where site.RegularPages "Section" "posts").ByDate.Reverse -}}
+{{- with site.Config.Services.RSS.Limit -}}
+  {{- if ge . 1 -}}{{- $pages = $pages | first . -}}{{- end -}}
+{{- end -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.Title }}</title>
+    <link>{{ .Permalink }}</link>
+    {{- /* 기본 템플릿은 여기에 "Recent content on ..." 이라는 영어를 넣는다.
+           한글 사이트의 피드에 영어 설명이 나가는 자리였다 */}}
+    <description>{{ site.Params.description }}</description>
+    <generator>Hugo</generator>
+    {{- /* .LanguageCode 는 0.158 에서 폐기됐다. hugo.toml 의 locale 을 읽는 쪽이 .Locale 이다 */}}
+    <language>{{ site.Language.Locale }}</language>
+    {{- with $pages }}
+    <lastBuildDate>{{ (index . 0).Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    {{- end }}
+    {{- with .OutputFormats.Get "rss" }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q/>" .Permalink .MediaType.Type | safeHTML }}
+    {{- end }}
+    {{- range $pages }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ .Summary | transform.XMLEscape | safeHTML }}</description>
+    </item>
+    {{- end }}
+  </channel>
+</rss>

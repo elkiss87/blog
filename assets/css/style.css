@@ -142,16 +142,34 @@ body {
   font-size: 14px;
 }
 
-/* 대문 index.html 의 푸터 링크와 같은 모양. 빠뜨리면 브라우저 기본 파란색이
-   나오는데, 사이트에 파란 게 하나도 없어서 여기만 튄다 */
-.site-foot a {
-  color: var(--text-sub);
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
+/* 푸터의 아이콘 줄. 헤더의 화면 밝기 토글과 같은 모양으로 맞춘다 —
+   사이트의 아이콘 링크가 헤더와 여기뿐이라, 서로 다르게 생기면 그게 더 눈에 띈다.
+
+   줄 전체를 왼쪽으로 7px 당긴다. 18px 아이콘이 32px 상자 안에 있어서,
+   안 당기면 첫 아이콘이 본문 왼쪽 선보다 그만큼 안쪽으로 들어가 보인다 */
+.foot-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: -7px;
 }
 
-.site-foot a:hover { color: var(--text); }
+.foot-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: var(--text-sub);
+}
+
+.foot-links a:hover { color: var(--text); background: var(--code-bg); }
+
+/* 키보드로 왔을 때는 보여야 한다. 토글과 같은 값이다 */
+.foot-links a:focus-visible { outline: 2px solid var(--text-sub); outline-offset: 2px; }
+
+.foot-links svg { display: block; }
 
 /* ── 목록 ────────────────────────────────────── */
 
