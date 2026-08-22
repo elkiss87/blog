@@ -1,0 +1,60 @@
+# athena-copies
+# 2026-08-23 · ChatGPT 이미지 생성
+#
+# 「원본은 설명을 고쳤는데 복사본은 그대로입니다」 절의 그림.
+#
+# 이 자리를 고른 근거는 감이 아니라 측정이다. 그림·표·코드·인용 없이 이어지는 구간이
+# 이 글에 둘 있는데(1021자 / 962자) 나머지는 전부 520자 이하다. 그중 962자 구간의
+# 한복판이 이 절이다 → docs/ILLUST.md §10, docs/LOG.md 2026-08-23
+#
+# 왜 표가 아니라 그림인가 — "원본은 고쳤는데 베낀 것들은 안 고쳤다" 는 시간차와
+# 베낀 관계를 한 장면에 같이 놓아야 읽힌다. 표로 늘어놓으면 둘이 그냥 다른 두 항목이 된다.
+#
+# 접은 안 1 — 복사기에서 사본이 줄줄이 나오는 그림. "복사본" 은 보이지만
+# "원본이 고쳐졌다" 를 못 보여준다. 덧붙인 새 종이가 그 일을 대신한다.
+#
+# 접은 안 2 — 낡은 사본을 발밑에 흩뿌리는 구도. 배경이 투명이라 바닥에 놓인 것이
+# 떠 보인다. 손에 쥐는 것으로 바꿨다.
+#
+# 글자를 못 쓰므로 종이 내용은 전부 물결선이다. athena-published 와 같은 방식.
+# 금색은 새로 덧붙인 종이 한 장에만 준다 — 바뀐 것 하나를 짚어주는 몫이다.
+#
+# 뽑을 때 athena-published.png 를 참조 이미지로 첨부한다 → docs/ILLUST.md §9
+#
+# 2026-08-23 생성 완료. 1536x1024, 투명 PNG, 완전 투명 픽셀 64.7%.
+# 다크에서 밝은 면적 14% — 게시판이 넓어 걱정했는데 도입 컷(11%) 쪽에 가까웠다.
+# 선으로만 그린 면은 넓어도 밝지 않다 → docs/ILLUST.md §12
+#
+# 프롬프트와 어긋난 자리 (§12 방침대로 문구는 고치지 않는다):
+#   - "four or five sheets" 라고 적었는데 서너 장으로 나왔다. 세는 수는 잘 안 맞는다
+#   - 게시판 옆에 금색 강조선(만화의 '반짝' 표시)이 붙어 나왔다. 안 적은 것이다.
+#     빼지 않았다 — 시선이 새 종이로 가야 하는 컷이라 오히려 거든다
+#   - "one eyebrow raised" 는 눈썹보다 손을 턱에 대고 갸웃하는 쪽으로 나왔다.
+#     견주어 보는 인상은 그대로라 두었다
+
+Draw a wide landscape illustration (about 3:2), in loose pencil sketch style.
+
+A cute 2.5-head-tall SD chibi girl named Athena: shoulder-length wavy hair and
+a small Corinthian helmet worn like a hat, tilted back so her whole face is
+visible. Large round eyes. She wears a short sleeveless Greek chiton dress
+with a shoulder brooch and a waist cord, and simple sandals. A palm-sized
+round owl is perched on her shoulder.
+
+She stands before a small notice board mounted on a post, looking up at it
+with her head tilted and one eyebrow raised. On the board a crisp new sheet is
+pasted over an older one, whose dog-eared corners still poke out from
+underneath. In her other hand she holds a small fan of four or five sheets
+that are creased and worn at the edges. Every sheet, both on the board and in
+her hand, is filled edge to edge with wavy squiggle lines instead of words.
+
+She and the notice board sit centered in the frame with generous empty space
+around them, and there is no other scenery at all. Make the background fully
+transparent if possible; otherwise use a plain flat white background. No
+ground shadow.
+
+Style: loose pencil sketch, monochrome graphite line art with light hatching.
+The entire drawing is grayscale EXCEPT one warm gold accent (#c9a227), used
+only on three things — her helmet, her shoulder brooch, and the crisp new
+sheet pasted on the board. Everything else, including her hair, the owl, and
+the worn sheets in her hand, stays grey. No writing or lettering anywhere in
+the image.
