@@ -1,0 +1,58 @@
+# athena-signpost
+# 2026-08-25 · ChatGPT 이미지 생성
+#
+# 두 번째 글 「도메인은 어떻게 연결할까?」의 커버.
+#
+# 표지판은 방향을 가리키는 물건이고, 도메인이 하는 일이 그것이다.
+# 팔에서 작은 팻말들이 매달려 내려오는 것은 elkiss.me 하나 아래로 서브도메인이
+# 무제한이라는 글의 마지막 절이다. 표지판만으로는 "주소" 가 안 읽혀서 붙였다.
+#
+# 앞선 넉 장이 전부 눈높이 정면이라 앵글을 바꿨다 — 아래에서 올려다보고,
+# 표지판이 화면을 세로로 지배하고, 아테나는 그 발치에 작게 선다.
+# 얼굴은 살린다. 올려다보는 표정이 이 컷의 몫이다.
+#
+# 건물을 일부러 뺐다. athena-published 가 가게, athena-copies 가 게시판이라
+# 또 건축물이면 앵글만 바꾼 같은 그림이 된다. 기둥 하나만 세운다.
+#
+# 글자를 못 쓰므로 팻말 내용은 전부 물결선이다. 앞선 컷들과 같은 방식.
+# 금색은 작은 팻말들이 매달린 큰 팔 하나에만 준다 — 산 것은 그 하나뿐이라는 몫이다.
+#
+# 뽑을 때 athena-copies.png 를 참조 이미지로 첨부한다 → docs/ILLUST.md §9
+# 2026-08-29 생성 완료. 1536x1024, 투명 PNG, 완전 투명 71.3% — 넷 중 제일 높다.
+# 다크에서 밝은 면적 11.3% 로 도입 컷과 같은 수준이다. 배경이 넓어서 그렇다.
+#
+# 프롬프트와 어긋난 자리 (§12 방침대로 문구는 고치지 않는다):
+#   - "leaning back on her heels" 가 거의 안 나왔다. 그냥 서서 올려다본다.
+#     자세를 지시하는 문구는 잘 안 먹는 편이다
+#   - "she stands small at its foot" 라고 적었는데 화면의 3분의 1쯤으로 꽤 크게 나왔다.
+#     로우앵글도 완만하다. 그래도 표지판이 세로를 지배하는 목적은 이뤄졌다
+#   - 팔 넷 · 작은 팻말 셋 · 금색 세 자리는 지시대로 나왔다. 세는 수가 맞은 것은
+#     athena-copies("four or five sheets" → 서너 장) 때와 다르다
+
+Draw a wide landscape illustration (about 3:2), in loose pencil sketch style.
+
+A cute 2.5-head-tall SD chibi girl named Athena: shoulder-length wavy hair and
+a small Corinthian helmet worn like a hat, tilted back so her whole face is
+visible. Large round eyes. She wears a short sleeveless Greek chiton dress
+with a shoulder brooch and a waist cord, and simple sandals. A palm-sized
+round owl is perched on her shoulder.
+
+She stands at the foot of a tall wooden signpost, leaning back on her heels
+and looking straight up at it with wide round eyes and her mouth slightly
+open. The post carries four arrow-shaped boards mounted at different heights,
+each pointing a different way, and from the widest board three much smaller
+plaques hang in a row on short chains. Every board and plaque is covered edge
+to edge with wavy squiggle lines instead of words.
+
+Frame it from low down and looking upward, so the signpost rises tall through
+the upper part of the frame and she stands small at its foot. Generous empty
+space around them and no other scenery at all — no wall, no building, just the
+one post. Make the background fully transparent if possible; otherwise use a
+plain flat white background. No ground shadow.
+
+Style: loose pencil sketch, monochrome graphite line art with light hatching.
+The entire drawing is grayscale EXCEPT one warm gold accent (#c9a227), used
+only on three things — her helmet, her shoulder brooch, and the single widest
+board that the small plaques hang from. Everything else, including her hair,
+the owl, the post, the other boards, and the small hanging plaques, stays
+grey. No writing or lettering anywhere in the image.
