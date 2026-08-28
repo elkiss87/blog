@@ -103,7 +103,10 @@ McClintock 본인이 그렇게 "추정했다" 고 적혀 있을 뿐입니다.[^t
 더 이상한 것은, 저 설명이 실려 있던 `lipsum.com` 이 지금은 다르게 적고 있다는 점입니다.
 **1966년, Letraset 의 디자이너들과 세인트브라이드 인쇄도서관 사서 James Mosley 가
 1914년판 키케로 번역본을 가져다 뒤섞어 만들었다**는 설명입니다.
-이후 문질러 붙이는 전사 시트로 퍼졌고, Aldus PageMaker 같은 출판 소프트웨어에 실리면서 굳었습니다.[^letraset]
+애초에 그 **전사 시트**에 실으려고 만든 텍스트입니다 — 글자가 인쇄된 필름을
+종이에 대고 문지르면 글자가 옮겨 붙는 물건으로, 디자이너들이 손으로 본문 문단을
+흉내 낼 때 썼습니다. 그 시트로 업계에 퍼졌고, 나중에 Aldus PageMaker 같은
+출판 소프트웨어에 실리면서 굳었습니다.[^letraset]
 
 ![새로 덧붙인 종이와 손에 든 낡은 사본을 견주는 아테나](images/athena-copies.png)
 
@@ -208,7 +211,7 @@ McClintock 본인이 그렇게 "추정했다" 고 적혀 있을 뿐입니다.[^t
 
 [^theory]: [Open Culture](https://www.openculture.com/2015/03/the-story-of-lorem-ipsum.html)는 *"as McClintock theorized"* 라고 적고 있습니다 — 확인된 사실이 아니라 그가 세운 가설이라는 뜻입니다. 확실한 것은 라틴어 대목이 키케로에서 왔다는 것뿐입니다.
 
-[^letraset]: [lipsum.com](https://www.lipsum.com/)의 현재 설명입니다. 1966년 Letraset 의 디자이너들과 James Mosley 가 1914년판 키케로 번역본을 뒤섞어 만들었다고 적혀 있습니다. Mosley 는 런던 세인트브라이드 인쇄도서관(St Bride Printing Library)의 사서로 소개돼 있습니다. 옛 설명은 [2015년 4월 스냅샷](https://web.archive.org/web/20150401033538/http://www.lipsum.com/)에 그대로 남아 있습니다 — 두 판을 견주면 *"ever since the 1500s"* 가 *"ever since 1966"* 으로, *"five centuries"* 가 *"many decades"* 로 바뀌어 있습니다.
+[^letraset]: [lipsum.com](https://www.lipsum.com/)의 현재 설명입니다. 1966년 Letraset 의 디자이너들과 James Mosley 가 1914년판 키케로 번역본을 뒤섞어 만들었다고 적혀 있습니다. Mosley 는 런던 세인트브라이드 인쇄도서관(St Bride Printing Library)의 사서로 소개돼 있습니다. 전사 시트(dry transfer lettering)는 [Letraset](https://en.wikipedia.org/wiki/Letraset) 이 1961년에 내놓은 제품으로, DTP 가 자리 잡기 전까지 디자이너가 글자를 손으로 앉히던 도구입니다. 옛 설명은 [2015년 4월 스냅샷](https://web.archive.org/web/20150401033538/http://www.lipsum.com/)에 그대로 남아 있습니다 — 두 판을 견주면 *"ever since the 1500s"* 가 *"ever since 1966"* 으로, *"five centuries"* 가 *"many decades"* 로 바뀌어 있습니다.
 
 [^unicode]: [Hangul Syllables, Wikipedia](https://en.wikipedia.org/wiki/Hangul_Syllables). 음절 영역 `U+AC00`–`U+D7A3` 은 초성 19 × 중성 21 × 종성 28 = 11,172자로, 코드값에서 자모 번호를 계산할 수 있습니다. 588은 21 × 28이고, 나눗셈은 몫만 씁니다.
 
