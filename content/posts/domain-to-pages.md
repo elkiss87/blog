@@ -130,6 +130,8 @@ public 저장소라 유출은 아닙니다. 어차피 GitHub 에서 볼 수 있�
 `README.md` 를 기본 테마로 렌더링해서 보여줍니다. Jekyll 을 쓰겠다고 한 적이 없는데
 기본 동작이 그렇습니다. 응답 HTML 에 `Jekyll SEO tag` 주석이 남아 있어서 알았습니다.
 
+![위에서 내려다본 바닥. 액자와 붓이 놓여 있고 맨발 자국이 왔다가 되돌아 나갔다](images/athena-footprints.png)
+
 | | `Deploy from a branch` | 커스텀 Actions |
 |---|---|---|
 | 주소가 생기는 것 | 저장소 루트 전부 | 워크플로가 담은 것만 |

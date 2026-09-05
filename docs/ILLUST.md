@@ -290,16 +290,31 @@ his shoulder near the top edge.
 
 ## 8. F 블록 — 그림체
 
-포인트 지정(`<ACCENT TARGETS>`)만 캐릭터·컷에 맞춰 갈아 끼운다.
+**그림체와 구도를 갈랐다** (2026-09-05). 전에는 한 덩어리였는데,
+**"배경 없음 · 중앙에 피사체 하나 · 주변은 여백" 이 F 블록에 들어 있어서
+컷마다 구도가 강제되고 있었다.** 다섯 장이 소품과 각도만 다르고 나머지가 같았던
+원인이 여기다. 그림체를 지키려면 구도까지 따라오게 돼 있었다.
+
+**F 블록 — 안 바꾼다**
 
 ```text
 Style: loose pencil sketch, monochrome graphite line art with light hatching.
 The entire drawing is grayscale EXCEPT one warm accent color <HEX>, used only
-on <ACCENT TARGETS>. Everything else, including the glasses and the hair,
-stays grey. Plain flat white background with no scenery and no ground shadow.
-Single centered subject with generous empty space around it. No writing or
-lettering anywhere in the image.
+on <ACCENT TARGETS>. Everything else stays grey. No writing or lettering
+anywhere in the image.
 ```
+
+**배경·구도는 E 블록에서 컷마다 정한다.** 아래는 지금까지 쓰던 기본값일 뿐이고,
+컷이 요구하면 얼마든지 버린다.
+
+```text
+Plain flat white background with no scenery and no ground shadow.
+Single centered subject with generous empty space around it.
+```
+
+- 투명 배경 요청(§4)과 글자 금지(§9)는 컷과 무관하므로 F 에 남는다
+- **잘라내기·시점·크기 대비·칸 나누기는 전부 E 의 몫이다.** 전신을 안 그려도 되고,
+  캐릭터가 화면의 1/6 이어도 되고, 두 칸으로 나눠도 된다
 
 ---
 
@@ -382,6 +397,19 @@ lettering anywhere in the image.
 ### 몇 장인가 — 개수가 아니라 마른 구간으로 센다 (2026-08-23)
 
 > **그림·표·코드·인용 사이가 800자를 넘으면 쉼표를 하나 넣는다.**
+>
+> **그리고 한 편에 본문 삽화가 최소 한 장은 들어간다.**
+
+**두 기준이 따로 있는 이유** (2026-09-05). 800자 기준만 두면 표와 코드로만 끊긴 글이
+통과한다. 두 번째 글이 그랬다 — 쉼표는 여덟 개로 첫 글과 같은데 그중 삽화가 0장이었고,
+구조물 비중은 오히려 더 높았다(25.7% vs 21.1%).
+
+**표와 코드는 쉼표이면서 동시에 정보다.** 눈이 멈추기는 하는데 쉬지는 않는다.
+표를 만나면 읽어야 하고 코드를 만나면 따라가야 한다. **삽화만 쉬는 쉼표다.**
+
+그리고 `PLAN.md` §5 가 삽화를 **말투 축의 결정**으로 정해뒀는데, 커버만 있으면
+목록에서만 캐릭터가 보이고 **글을 읽는 동안에는 아예 안 나온다.** 말투 장치가
+본문에서 꺼져 있는 셈이다.
 
 **"글당 몇 장" 으로 정하지 않는다.** 2000자 글과 6000자 글에 같은 수를 요구하면
 한쪽은 과하고 한쪽은 모자란다. 무엇보다 **어디에 넣을지를 안 알려준다.**
@@ -416,7 +444,7 @@ lettering anywhere in the image.
 
 ## 12. 그린 것 — 기록
 
-다섯 다 1536×1024 (3:2), 투명 PNG 다.
+여섯 다 1536×1024 (3:2), 투명 PNG 다.
 
 | 파일 | 자리 | 생성 | 원본 → 배포 |
 |---|---|---|---|
@@ -425,12 +453,18 @@ lettering anywhere in the image.
 | `athena-published.png` | 첫 글 「그대로 발행돼」 | 2026-08-21 | 2.24MB → 236KB |
 | `athena-copies.png` | 첫 글 「원본은 설명을 고쳤는데」 | 2026-08-23 | 2.11MB → 230KB |
 | `athena-signpost.png` | **두 번째 글 커버** | 2026-08-29 | 1.93MB → 186KB |
+| `athena-footprints.png` | 두 번째 글 「기본 배포는…」 | 2026-09-06 | 2.75MB → 315KB |
 
-전부 `assets/images/` 에 있다. 원본 합계 10.1MB 가 배포본에서는 1,038KB 다.
+전부 `assets/images/` 에 있다. 원본 합계 12.8MB 가 배포본에서는 1,353KB 다.
 (배포본 숫자는 `1440x webp` 만 센 것이다. 커버는 `og:image` 용 jpg 가 하나 더 나온다)
 
 **다크에서 밝은 면적**(화면 대비, 알파 128 초과 픽셀 중 휘도 200 초과):
-소개 17% · 도입 11% · 발행 32% · 사본 14% · 표지판 11%. **발행 컷이 유독 밝은 것은 흰 건물이 넓어서다.**
+소개 17% · 도입 11% · 발행 32% · 사본 14% · 표지판 11% · 발자국 34%.
+
+**이 숫자 하나만 보면 넓은 것과 밝은 것이 안 갈린다** (2026-09-06). 표지판 컷이 11% 인 것은
+어두워서가 아니라 그림이 화면을 덜 채워서다. **「그린 것 중 밝은 픽셀의 비율」을 같이 본다** —
+소개 45% · 도입 55% · 발행 67% · 사본 43% · 표지판 44% · 발자국 67%.
+발자국 컷이 화면 대비로는 제일 높지만 **이미 통과한 발행 컷과 세 지표가 거의 같아서** 그대로 갔다. **발행 컷이 유독 밝은 것은 흰 건물이 넓어서다.**
 번쩍이는 수준은 아니지만, 흰 면이 넓은 그림이 또 들어오면 그때 다시 잰다.
 
 **사본 컷에서 그 조건이 걸려 실제로 쟀다** (2026-08-23). 게시판이 넓어 걱정했는데

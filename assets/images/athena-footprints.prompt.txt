@@ -1,0 +1,62 @@
+# athena-footprints   (안 B — 탑다운, 흔적이 주인공)
+# 2026-09-05 · ChatGPT 이미지 생성
+#
+# 두 번째 글 「기본 배포는 저장소 루트를 통째로 서빙합니다」 절, Jekyll 대목.
+# 자리와 내용은 athena-meanwhile 과 같다. 둘 중 하나를 고른다.
+#
+# 이 컷은 주인공이 캐릭터가 아니라 **흔적**이다. 위에서 수직으로 내려다보고,
+# 아테나는 화면 아래 가장자리에 발끝만 걸친다. 얼굴도 전신도 없다.
+# "누가 왔다 갔다" 를 발자국이 직접 말한다 — 그린 사람은 화면에 없다.
+#
+# 이 컷만 바닥을 그린다. 탑다운은 바닥이 없으면 물건이 허공에 뜬다.
+# §8 에서 "배경 없음" 을 F 블록 밖으로 뺐기 때문에 가능해졌다 (2026-09-05).
+# 바닥은 성기게 친 해칭으로 둥글게 두고 바깥은 투명으로 둔다.
+#
+# 발자국이 아테나 것과 달라야 한다. 샌들 자국이 아니라 맨발 자국으로 갈라놓는다.
+# 액자 쪽으로 왔다가 다시 나가는 한 줄이라, 두고 간 사람이 이미 없다는 것이 보인다.
+#
+# 금색은 바닥에 놓인 액자 하나에만 준다. 아테나의 투구·브로치는 이번엔 회색이다 —
+# 발끝만 나오니 어차피 안 보이고, 금색이 하나여야 시선이 액자로 간다.
+# 캐릭터에서 금색을 뗀 것은 이 컷이 처음이다.
+#
+# 글자를 못 쓰므로 액자 내용은 물결선이다.
+# 뽑을 때 athena-copies.png 를 참조 이미지로 첨부한다 → docs/ILLUST.md §9
+# 2026-09-06 생성 완료. 1536x1024, 투명 PNG, 완전 투명 45.8%.
+# 다크에서 밝은 면적 34% 로 여섯 장 중 제일 높은데, 그린 것 중 밝은 비율(67%)이
+# 이미 통과한 발행 컷(67%)과 같아서 그대로 갔다 → docs/ILLUST.md §12
+#
+# 같이 검토하고 접은 안 — 두 칸 만화(athena-meanwhile). 왼쪽 칸에서 아테나가 나가고
+# 오른쪽 칸에 액자가 생겨 있는 구성이었다. 내용에는 더 정확했지만 지휘관이 이쪽을 골랐다.
+# 탑다운·신체 일부만·흔적이 주인공인 것이 전부 처음이라 새로움이 컸다.
+#
+# 프롬프트와 어긋난 자리 (§12 방침대로 문구는 고치지 않는다):
+#   - 풀 포기와 자갈이 붙어 나왔다. 안 적은 것이다. 빼지 않았다 —
+#     바닥이 바닥으로 읽히게 거든다. athena-published 의 화분과 같은 경우다
+#   - 발자국이 "왔다가 되돌아 나가는 한 줄" 이 아니라 액자를 둘러 도는 모양이 됐다.
+#     누가 왔다 갔다는 읽히므로 그대로 뒀다
+
+Draw a wide landscape illustration (about 3:2), in loose pencil sketch style,
+seen from directly overhead looking straight down at the ground.
+
+A framed panel lies flat on the ground near the middle of the frame, covered
+edge to edge with wavy squiggle lines instead of words. A single paintbrush
+lies beside it.
+
+A line of small bare footprints comes in from the upper edge, walks up to the
+panel, and turns and goes back out the same way. Whoever made them is gone —
+nobody is standing in the picture.
+
+At the very bottom edge of the frame, only the toes of a pair of small sandals
+are visible, as if someone has just walked up and stopped. Nothing else of
+that person is in view — no legs, no body, no face.
+
+Draw the ground as a loose roughly circular patch of light pencil hatching
+under the panel and the footprints, fading out at its edges. Outside that
+patch make the background fully transparent if possible; otherwise use a plain
+flat white background. No cast shadows.
+
+Style: loose pencil sketch, monochrome graphite line art with light hatching.
+The entire drawing is grayscale EXCEPT one warm gold accent (#c9a227), used
+only on the framed panel lying on the ground. Everything else, including the
+sandals, the paintbrush, the footprints and the ground, stays grey. No writing
+or lettering anywhere in the image.
