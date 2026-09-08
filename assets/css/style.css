@@ -156,6 +156,7 @@ body {
 
 .foot-links a {
   display: inline-flex;
+  text-decoration: none;
   align-items: center;
   justify-content: center;
   width: 32px;
@@ -206,7 +207,7 @@ body {
 
 /* 목록의 커버. 화면 읽기 프로그램에서는 건너뛴다 — 바로 아래 제목이 같은 곳을 가리켜서
    같은 링크를 두 번 읽게 된다. 마크업의 aria-hidden 과 tabindex 가 그 일을 한다 */
-.post-item .post-cover { display: block; }
+.post-item .post-cover { display: block; text-decoration: none; }
 .post-item .post-cover img {
   display: block;
   width: 100%;
@@ -226,9 +227,17 @@ body {
   font-weight: 600;
   line-height: 1.45;
   color: var(--text);
+  text-decoration: none;
   border: 0;
 }
 
+/* 밑줄은 마우스를 올렸을 때만 긋는다.
+
+   text-decoration: none 이 없으면 브라우저 기본 밑줄이 늘 그어져 있고,
+   아래 규칙은 밑줄을 긋는 것이 아니라 3px 아래로 미는 일만 한다.
+   그러면 마우스를 올릴 때 밑줄이 스윽 내려앉는 것처럼 보인다 (docs/LOG.md 2026-09-06).
+   border: 0 은 테두리를 지울 뿐 text-decoration 을 지우지 않는다 — 같은 실수를
+   .prose a 와 각주 번호에서도 했다 */
 .post-item a:not(.post-cover):hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* 요약. 제목보다 물러나야 목록을 훑을 때 제목이 먼저 읽힌다 */
