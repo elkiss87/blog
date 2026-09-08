@@ -282,6 +282,54 @@ body {
 
 .prose h3 { margin: 32px 0 10px; font-size: 17px; font-weight: 700; }
 
+/* 제목 앵커. 제목 뒤의 # 이고, 누르면 그 대목 주소가 주소창에 잡힌다.
+
+   **손가락으로 쓰는 화면에는 그리지 않는다.** 처음에는 hover 가 없는 기기에
+   늘 흐리게 보이게 했는데, 재보니 375px 에서 # 한 칸이 제목 둘을 한 줄에서
+   두 줄로 밀었다. 장식이 제목 줄을 늘리면 안 된다.
+   400px 부터는 안 밀렸지만 그건 지금 있는 제목들 얘기라, 폭으로 자르면
+   새 제목이 언제 걸릴지 모른다.
+
+   앵커는 "주소를 집어서 남에게 준다" 는 동작이고 그건 앉아서 하는 일이다.
+   폰에서는 글 주소를 통째로 공유한다. 읽는 데 필요한 것을 뺀 것이 아니다 */
+.prose .heading-anchor { display: none; }
+
+@media (hover: hover) {
+  /* .prose a 의 밑줄을 걷어낸다. 제목 옆의 # 에 밑줄이 그어지면 지저분하고,
+     그건 링크가 아니라 손잡이로 보여야 한다 */
+  .prose .heading-anchor {
+    display: inline;
+    margin-left: .35em;
+    border: 0;
+    color: var(--text-sub);
+    font-weight: 400;
+    opacity: 0;
+  }
+
+  /* 늘 보이되 제목보다 한참 뒤로 물러나 있게 한다.
+
+     처음에는 hover 전에 아예 안 보이게(opacity 0) 뒀는데, 그러면 제목에 마우스를
+     올려보기 전까지 있는 줄을 모른다. .28 은 제목 글자와 경쟁하지 않으면서
+     "여기 뭔가 있다" 는 보이는 선이다 */
+  .prose h2 > .heading-anchor,
+  .prose h3 > .heading-anchor { opacity: .28; }
+
+  .prose h2:hover > .heading-anchor,
+  .prose h3:hover > .heading-anchor { opacity: .55; }
+
+  .prose .heading-anchor:hover { opacity: 1; color: var(--text); }
+
+  /* 키보드로 왔을 때는 제목에 마우스가 없어도 보여야 한다 */
+  .prose .heading-anchor:focus-visible {
+    opacity: 1;
+    outline: 2px solid var(--text-sub);
+    outline-offset: 2px;
+  }
+}
+
+/* 눌러서 뛰어온 제목이 화면 맨 위에 딱 붙지 않게 한다. 각주에 준 것과 같은 값이다 */
+.prose h2[id], .prose h3[id] { scroll-margin-top: 24px; }
+
 .prose p { margin: 0 0 20px; }
 
 .prose ul, .prose ol { margin: 0 0 20px; padding-left: 22px; }
