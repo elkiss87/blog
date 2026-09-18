@@ -1,8 +1,6 @@
-# Hugo 설정. 지금은 /sample/ 아래에 시안만 올린다.
-# 대문(루트 index.html)은 Hugo 가 건드리지 않는다 — 시안이 엎어져도 사이트는 멀쩡해야 한다.
+# Hugo 설정. 대문까지 사이트 전체를 Hugo 가 만든다.
 #
-# baseURL 은 배포 워크플로에서 --baseURL 로 덮어쓴다.
-# 여기 값은 로컬에서 `hugo server` 로 띄울 때 쓰인다.
+# baseURL 은 배포 워크플로에서 덮어쓰지 않는다 — 배포본이 이 값을 그대로 쓴다.
 baseURL = 'https://blog.elkiss.me/'
 title = 'ELKISS BLOG'
 
