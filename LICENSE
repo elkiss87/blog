@@ -6,7 +6,8 @@
     layouts/        템플릿과 렌더 훅
     assets/css/     스타일시트
     hugo.toml       설정
-    .github/        배포 워크플로
+    .github/        배포·실험 워크플로
+    lab/            글에서 돌린 실험 코드
 
 가져다 쓰셔도 됩니다. 아래 MIT 라이선스 전문이 적용됩니다.
 

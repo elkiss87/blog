@@ -1,0 +1,59 @@
+name: map sentinel experiment
+
+# 세 번째 글의 실험이다. 빈 std::map 안에 자기 자신을 가리키는 포인터가 있는지 본다.
+# 맥(Apple libc++)은 손으로 돌려봤고, 여기서는 맥에서 못 재는 쪽 —
+# 윈도우 MSVC 와 리눅스 libstdc++·libc++ — 을 돌린다. 결과는 이 워크플로의 로그다.
+#
+# 실험 코드나 이 파일이 바뀔 때만 돈다. 사이트 배포와는 관계없다.
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "lab/map-relocation/**"
+      - ".github/workflows/map-relocation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  msvc:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: lab/map-relocation
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 서드파티 액션 없이 러너에 깔린 Visual Studio 를 찾아 개발자 셸로 들어간다.
+      # /MD 는 언리얼과 같은 릴리스 CRT 다. 언리얼은 디버그 빌드에서도 이쪽을 쓴다.
+      - name: Build and run (MSVC)
+        shell: pwsh
+        run: |
+          $vs = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property installationPath
+          Import-Module (Join-Path $vs 'Common7\Tools\Microsoft.VisualStudio.DevShell.dll')
+          Enter-VsDevShell -VsInstallPath $vs -SkipAutomaticLocation -DevCmdArguments '-arch=x64 -host_arch=x64' | Out-Null
+          cl /std:c++20 /EHsc /MD sentinel.cpp
+          .\sentinel.exe
+
+  linux:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lab/map-relocation
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 언리얼은 리눅스에서 엔진에 딸린 libc++ 로 빌드한다. 그 조합을 보려고 받는다.
+      # GCC 기본값인 libstdc++ 는 러너에 이미 있다.
+      - name: Install libc++
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq libc++-dev libc++abi-dev
+
+      - name: Build and run (GCC libstdc++ / Clang libc++)
+        run: |
+          g++ --version | head -1
+          g++ -std=c++20 sentinel.cpp -o gcc && ./gcc
+          clang++ --version | head -1
+          clang++ -std=c++20 -stdlib=libc++ sentinel.cpp -o libcxx && ./libcxx
