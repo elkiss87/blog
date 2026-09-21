@@ -1,0 +1,105 @@
+# commander-jars
+# 2026-09-22 · ChatGPT 이미지 생성
+#
+# 세 번째 글 「윈도우에선 우연히 돌아가고 있었습니다」의 커버.
+#
+# 글의 핵심은 std::map 의 센티넬이 객체 "안" 에 있느냐 "밖" 에 있느냐 하나다.
+# 똑같이 생긴 단지 둘을 놓고 그 구슬의 자리만 다르게 했다.
+# 어느 쪽이 어느 구현인지는 본문 표가 말한다. 그림은 "둘이 다르다" 까지만 한다.
+#
+# 그림의 장치 셋
+#
+# 하나 — 클로즈업. 이 컷에서 지휘관이 할 일은 궁금해하는 얼굴이고, 전신으로 두면
+# 표정이 죽는다. 지팡이는 혼천의 머리만 위에 걸친다. 고리 안에 구슬이 든 물건이라
+# 왼쪽 단지와 같은 구조이고, 그 각운만 살리면 자루까지 보일 이유가 없다.
+#
+# 둘 — 단지 안은 레드블랙 트리다. 포인트 색이 주홍이라 노드를 검정과 주홍으로 칠하면
+# 그게 곧 레드블랙 트리가 된다. 배색도 맞췄다 — 맨 위 검정, 그 아래 둘 주홍,
+# 맨 아래 넷 검정. 루트는 검정이고 빨강은 연속될 수 없으므로 실제로 유효한 트리다.
+#
+# 셋 — 왼쪽 단지에 금이 간다. 센티넬을 제 몸 안에 든 쪽이 깨지는 쪽이고 그것이 글의 결론이다.
+# 금은 구슬이 유리에 닿은 자리에서 뻗는다. 오른쪽은 구슬이 목 밖으로 나와 멀쩡하다.
+#
+# 주홍은 세 곳 — 두 트리의 빨강 노드, 그리고 금. 스톨 술과 혼천의 구슬은 이번엔 회색이다.
+# 이 컷의 주인공은 인물이 아니라 단지 둘이고, 포인트 색은 봐야 할 것을 가리킨다 → §3
+# 센티넬 구슬은 색이 아니라 모양으로 구분한다. 트리 노드가 아니라 고리에 싸인 구슬이고,
+# 트리 꼭대기(루트)에서 실 하나로 이어진다. 루트의 부모가 센티넬을 가리키는 구조와 같다.
+#
+# 배경 — 세 번 고쳐 쓰다 처음부터 다시 뽑기로 했다 (2026-09-22).
+# 대화로 고치는 경로는 있던 캔버스를 물려받아서, 배경을 지우라고 할수록 덧칠이 됐다.
+# 완전 투명 비율이 34.9% → 34.1% → 26.4% 로 오히려 줄었다.
+# 그리고 §9 가 권하던 문장(`...otherwise use a plain flat white background`)의 뒷절이
+# "배경을 칠하라" 로 읽혔을 수 있다. 금지를 긍정 서술로 바꾸라는 §9 의 방침을
+# 배경에도 적용해서, 투명을 하나의 사실로 적고 대안을 적지 않는다.
+#
+# 뽑을 때 athena-and-commander.png 를 참조로 첨부한다 → §9. 그 파일도 투명 배경이다.
+#
+# 시도 기록 (2026-09-21 ~ 22) — 그림은 됐고 배경이 안 됐다.
+#
+#   1차 23:52  완전 투명 34.9%  금·구슬 위치 맞음. 왼쪽 트리만 구슬이 열 개
+#   2차 23:55  완전 투명 34.1%  수정 요청. 금이 사라졌다
+#   3차 00:01  완전 투명 26.4%  수정 요청. 금은 돌아오고 배경은 더 짙어졌다
+#   4차 00:06  완전 투명 42.4%  새 프롬프트로 새 대화. 트리 양쪽 다 일곱 개,
+#                               금·구슬 위치 정확. 배경의 검은 비네팅은 남았다
+#
+# 4차를 커버로 확정했다 (2026-09-22).
+# 배경을 못 뺀 채로 쓰기로 한 것은, 실제 화면에 올려보니 문제가 아니었기 때문이다.
+# **어두운 배경이 반투명이라** 미색 배경 위에서는 옅은 후광처럼 보이고
+# 어두운 배경에서는 녹아든다. 라이트·다크 양쪽을 로컬 서버로 띄워 확인했다.
+# 완전 투명 비율(42.4%)만 보고 판단했으면 다시 뽑을 뻔했다 — 숫자가 아니라 화면이 기준이다.
+#
+# 배포본: 2.89MB → webp 344KB, og:image jpg 189KB
+#
+# 참고 — 4차에서 로브가 설정 시트와 조금 달라졌다. 깃이 짙고 별 모양 장식이 붙었다.
+# 배경을 잡을 때 같이 볼 것.
+
+Draw a wide landscape illustration (about 3:2), in loose pencil sketch style,
+on a completely empty transparent canvas. Only the figures described below
+are drawn. Everything around them and behind them is empty transparent space,
+edge to edge, with no ground and no shadow.
+
+A cute 2.5-head-tall SD chibi young man called the Commander, clean-shaven
+and youthful, seen close up from the chest, his head and shoulders filling
+the middle of the frame. Only his face is round, with soft full cheeks. Short
+hair parted 6:4 to one side with softly flicked ends, covering the ears but
+not reaching the collar. Round thin metal-rimmed glasses, the frame drawn in
+plain grey line and left uncolored. Large gentle eyes with slightly downturned
+outer corners. He tilts his head, his eyes wide and his mouth slightly open
+in plain curiosity, one thin hand raised near his chin. He wears a neat
+fitted cleric robe with a broad collar and a short stole.
+
+Behind his shoulder, only the head of his tall wooden staff reaches into the
+top of the frame: an armillary sphere of several interlocking metal rings
+nested at angles around a small central orb, a plain physical object with no
+glow.
+
+One large glass jar floats on each side of his head, each about as tall as
+his head, each stoppered with a cork. Inside each jar hangs a small tree of
+exactly seven round beads joined by short straight threads: one bead at the
+top, two below it, four along the bottom. Both jars hold the very same tree,
+bead for bead. In each tree the top bead and the four bottom beads are filled
+solid dark, and the two middle beads are filled with the warm terracotta
+accent.
+
+Each jar also holds one more bead, a little orb caught in a cage of fine thin
+rings, joined by a single long thread to the top bead of its tree. The two
+jars differ only in where that caged bead sits. In the jar on his left it is
+inside the glass, pressed against the inner wall, and from that contact point
+thin cracks spider out across the glass in the same terracotta accent, with a
+few small chips lifting away, so that jar looks about to break. In the jar on
+his right the caged bead has been drawn out through the neck and hovers just
+outside the glass, its thread running out slack under the cork, and that jar
+is perfectly whole. He is looking at the cracking jar on his left.
+
+Compose it symmetrically, the two jars balanced left and right of his head so
+that the three of them fill the wide frame. The boy and the two jars are the
+only things in the picture, floating on emptiness.
+
+Style: loose pencil sketch, monochrome graphite line art with light hatching.
+The entire drawing is grayscale EXCEPT one warm terracotta accent (#b8412e),
+used only on three things — the two middle beads of the tree in the left jar,
+the two middle beads of the tree in the right jar, and the cracks running
+across the left jar. Everything else, including his hair, his glasses, his
+robe and stole, the staff and its rings, the glass jars, the corks, the
+threads, the caged beads and every other bead, stays grey. No writing or
+lettering anywhere in the image. The background is fully transparent.

@@ -454,7 +454,10 @@ Single centered subject with generous empty space around it.
 
 ## 12. 그린 것 — 기록
 
-여섯 다 1536×1024 (3:2), 투명 PNG 다.
+일곱 다 1536×1024 (3:2) 다. 여섯은 투명 PNG 이고,
+`commander-jars` 만 반투명한 어두운 배경을 달고 있다 — 네 번 뽑아도 안 빠져서 그대로 썼다.
+**라이트·다크 양쪽에서 띄워보고 정했다** (2026-09-22). 반투명이라 미색 배경에서는
+옅은 후광처럼 보이고 어두운 배경에서는 녹아든다. 판처럼 뜨는 자리가 없다 → §3
 
 | 파일 | 자리 | 생성 | 원본 → 배포 |
 |---|---|---|---|
@@ -464,6 +467,7 @@ Single centered subject with generous empty space around it.
 | `athena-copies.png` | 첫 글 「원본은 설명을 고쳤는데」 | 2026-08-23 | 2.11MB → 230KB |
 | `athena-signpost.png` | **두 번째 글 커버** | 2026-08-29 | 1.93MB → 186KB |
 | `athena-footprints.png` | 두 번째 글 「기본 배포는…」 | 2026-09-06 | 2.75MB → 315KB |
+| `commander-jars.png` | **세 번째 글 커버** | 2026-09-22 | 2.89MB → 344KB |
 
 전부 `assets/images/` 에 있다. 원본 합계 12.8MB 가 배포본에서는 1,353KB 다.
 (배포본 숫자는 `1440x webp` 만 센 것이다. 커버는 `og:image` 용 jpg 가 하나 더 나온다)
