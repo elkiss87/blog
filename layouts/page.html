@@ -7,7 +7,15 @@
            시안 문서는 적었으니 뜬다 — 시안은 글의 레이아웃을 재는 자라서
            글에 있는 것이 다 보여야 한다 */}}
       {{ with .Date }}
-        <time class="post-date" datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+        <p class="post-date">
+          <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
+          {{- /* 발행 뒤에 고친 글은 고친 날을 옆에 적는다. front matter 의 lastmod 만 믿는다 —
+                 git 날짜로 뽑으면 폴더를 옮기는 커밋까지 고친 날로 잡힌다 (hugo.toml [frontmatter]).
+                 같은 날 고친 것은 안 적는다. 발행한 날과 구분이 안 되니 적어봐야 소음이다 */ -}}
+          {{ if gt ($.Lastmod.Format "2006-01-02") ($.Date.Format "2006-01-02") }}
+            · <time datetime="{{ $.Lastmod.Format "2006-01-02" }}">{{ $.Lastmod.Format "2006-01-02" }}</time> 고침
+          {{- end }}
+        </p>
       {{ end }}
     </header>
 

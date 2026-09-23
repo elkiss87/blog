@@ -1,6 +1,7 @@
 ---
 title: "도메인은 어떻게 연결할까?"
 date: 2026-08-29T02:46:45+09:00
+lastmod: 2026-09-23
 description: "프로필 사이트를 만들려고 도메인을 샀습니다. 연결은 결국 CNAME 한 줄이었는데, 하필 제 이름 그대로의 주소가 그 한 줄이 원래 안 되는 자리였습니다."
 cover: images/athena-signpost.png
 coverAlt: "여러 갈래로 갈린 표지판을 올려다보는 아테나"

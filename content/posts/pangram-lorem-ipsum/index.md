@@ -1,6 +1,7 @@
 ---
 title: "시안에 넣은 문장들이 궁금했습니다"
 date: 2026-08-13
+lastmod: 2026-09-23
 description: "레이아웃을 확인하려고 만든 시안 문서에 팬그램과 로렘 입숨이 나란히 있었습니다. 무엇을 재는 물건인지 모르고 쓰고 있었습니다."
 cover: images/athena-question.png
 coverAlt: "세 장의 종이를 들고 갸웃하는 아테나"
