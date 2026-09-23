@@ -54,16 +54,23 @@ coverAlt: "유리 단지 둘 사이에서 갸웃하는 지휘관. 단지마다 �
 가리키는지 보는 것**이 전부입니다.
 
 ```cpp
-for (size_t i = 0; i < size / sizeof(void*); ++i)
+// 8바이트씩 뛰며 그 값이 range 가 가리키는 맵의 범위 안인지 본다
+static void walk(void* obj, void* range, size_t size)
 {
-    char* value = (char*)word[i];
+    char* base = (char*)range;
+    void** word = (void**)obj;
 
-    printf("  +%zu  %p", i * sizeof(void*), word[i]);
-    if (value >= base && value < base + size)
+    for (size_t i = 0; i < size / sizeof(void*); ++i)
     {
-        printf("  <- into the map at %p (+%d)", range, (int)(value - base));
+        char* value = (char*)word[i];
+
+        printf("  +%zu  %p", i * sizeof(void*), word[i]);
+        if (value >= base && value < base + size)
+        {
+            printf("  <- into the map at %p (+%d)", range, (int)(value - base));
+        }
+        printf("\n");
     }
-    printf("\n");
 }
 ```
 
@@ -147,7 +154,7 @@ libstdc++ 에서 두 개가 나오는 것은 센티넬의 왼쪽·오른쪽 포�
 
 ## 윈도우에서도 규칙은 똑같이 어기고 있었습니다
 
-언리얼은 이것을 숨기지 않습니다. TArray 문서와 TMap 문서에 같은 문장이 있습니다.[^ue]
+언리얼은 이것을 숨기지 않습니다. TArray 문서와 TMap 문서에 거의 같은 문장이 있습니다.[^ue]
 
 > TArray (like many Unreal Engine containers) assumes that the element type is
 > trivially relocatable, meaning that elements can safely be moved from one location
@@ -167,8 +174,8 @@ MSVC 에서 되는 것도 **그 구현의 선택이지 약속이 아닙니다.**
 이 판단이 혼자만의 것이 아니라는 근거도 있습니다. C++ 표준화 위원회에
 trivial relocatability 를 제안한 사람이 구현별로 정리해둔 표가 있는데,
 `list`·`set`·`map` 은 **libstdc++ 와 libc++ 에서 결코** 바이트째 옮길 수 없고
-**MSVC 에서는 가능하다**고 적혀 있습니다.[^inpractice]
-센티넬을 객체 안에 두기 때문이라는 설명까지 같습니다. 오늘 잰 값과 같은 이야기입니다.
+**MSVC 에서는 가능하다**고 적혀 있습니다. `set`·`map` 에는 템플릿 인자에 따라서라는 조건이 붙습니다.[^inpractice]
+센티넬을 객체 안에 두기 때문이라는 설명까지 같습니다. 앞에서 잰 값과 같은 이야기입니다.
 
 ## 표준 컨테이너였다면 안 터졌습니다
 
@@ -184,15 +191,14 @@ trivial relocatability 를 제안한 사람이 구현별로 정리해둔 표가 
 그래서 빠르고, 그래서 타입이 자기 안에 무엇을 들고 있는지 알 길이 없습니다.
 
 같은 데이터를 `std::vector<std::map<...>>` 에 담아 키웠다면 아무 일도 없었을 겁니다.
-`std::vector` 는 자리를 옮길 때 바이트를 복사하지 않습니다. 못 합니다.
-할당기 인터페이스에 `realloc` 에 해당하는 것이 없어서,
-새 메모리를 잡고 **원소마다 move 생성자를 불러** 옮긴 다음 옛 것을 소멸시킵니다.
+`std::vector` 도 자리가 모자라면 새 메모리로 옮기는데, 옮기기 전에 **원소 타입에게 묻습니다.**
+`int` 처럼 바이트째 복사해도 되는 타입이면 한 번에 바이트째 옮기고,
+`std::map` 처럼 아닌 타입이면 **원소마다 move 생성자를 불러** 옮긴 다음 옛 것을 소멸시킵니다.
 
 그리고 `std::map` 의 move 생성자는 그 자기 참조를 새 주소에 맞게 고쳐놓습니다.
 고쳐놓아야만 합니다. 옮긴 결과가 멀쩡한 맵이어야 하니까요.
 `memcpy` 에는 그 단계가 없습니다. **바이트만 건너가고 아무도 고치지 않습니다.**
 
-표준 라이브러리도 memcpy 최적화를 씁니다. `int` 배열을 옮기면서 생성자를 하나씩 부르지 않습니다.
 그러니 차이는 최적화를 하느냐가 아니라 **묻느냐 가정하느냐**입니다.
 언리얼은 속도를 위해 기본값을 "가정한다" 쪽에 두었습니다.
 대신 **무엇을 넣을지는 쓰는 사람의 몫**이 됩니다.
@@ -219,12 +225,12 @@ struct FValue { std::unique_ptr<std::map<int, int>> Data; };  // 포인터만 �
 센티넬을 가리키던 포인터는 여전히 맞는 곳을 가리킵니다.**
 앞에서 본 모순 — 비었다면서 시작과 끝이 다른 것 — 이 생길 자리가 아예 없어집니다.
 
-돌아보면 이게 이 글의 전부입니다.
+돌아보면 원인은 하나입니다.
 **자기를 가리키는 포인터가 있는 것이 문제였던 것이 아니라,
-그런 것을 옮긴 것이 문제였습니다.** 그래서 고치는 길도 둘뿐입니다.
+그런 것을 옮긴 것이 문제였습니다.** 그래서 고치는 방향도 둘뿐입니다.
 자기를 안 가리키게 만들거나(MSVC 가 하는 일), 옮기지 않거나(`unique_ptr` 이 하는 일).
 
-길은 이것 말고도 있습니다. 셋 다 같은 규칙의 다른 얼굴입니다 —
+실제로 고를 수 있는 방법은 여럿이고, 전부 같은 규칙의 다른 얼굴입니다 —
 **엔진 컨테이너에는 엔진이 가정하는 성질을 갖춘 타입만 넣는다.**
 
 - **한 겹 감쌉니다.** 위에서 고른 길입니다. 맵을 포인터 뒤에 둡니다
@@ -232,8 +238,6 @@ struct FValue { std::unique_ptr<std::map<int, int>> Data; };  // 포인터만 �
   변환합니다. 게임 로직은 엔진 타입만 보게 되고, 값은 한 번 복사됩니다
 - **주고받는 모양을 바꿉니다.** 애초에 키와 값의 쌍을 배열로 보내고,
   필요한 쪽에서만 맵으로 만듭니다
-
-셋 다 결국 **`std::map` 을 그대로 넘기지 않는다**는 한 문장입니다.
 
 ## 컴파일러가 대신 잡아줄 수 있을까
 
@@ -267,7 +271,7 @@ static_assert(std::is_trivially_copyable_v<T>,
 **언리얼은 자기가 푸는 문제에 맞게 골랐습니다.** 게임에서는 컨테이너가 프레임마다 자라고
 원소가 수만 개가 되기도 합니다. 원소마다 생성자와 소멸자를 부르는 비용을 걷어내는 대신,
 **무엇을 넣을지는 쓰는 사람이 책임진다**는 규칙을 세웠습니다.
-그리고 그 규칙을 문서 첫 줄에 적어뒀습니다. 숨기지 않았습니다.
+그리고 그 규칙을 컨테이너 문서에 적어뒀습니다. 숨기지 않았습니다.
 
 그리고 엔진이 쥐여주는 타입들은 그 가정을 지키도록 설계돼 있습니다.
 엔진 안에서만 놀면 가정이 참이고, **참인 가정은 공짜로 빠릅니다.**
@@ -286,7 +290,7 @@ static_assert(std::is_trivially_copyable_v<T>,
 표시를 세울 방법이 아직 마땅치 않다는 것도 알게 됐습니다.
 C++ 에는 "이 타입은 바이트째 옮겨도 된다" 고 말할 표준 방법이 없습니다.
 표준에 넣으려는 시도가 C++26 에 한 번 들어갔다가 2025년 11월에 도로 빠졌고,
-지금은 C++29 를 보고 있습니다.[^kona]
+다음 기회는 C++29 입니다.[^kona]
 그때까지는 **문서에 적힌 한 줄과, 그것을 읽은 사람의 앎**이 그 자리를 대신합니다.
 
 그래서 남는 것은 이것입니다. 윈도우에서 잘 돌던 코드가 리눅스에서 망가진 것이 아니라,
@@ -297,6 +301,6 @@ C++ 에는 "이 타입은 바이트째 옮겨도 된다" 고 말할 표준 방�
 
 [^ue]: 언리얼 공식 문서 [Array Containers](https://dev.epicgames.com/documentation/en-us/unreal-engine/array-containers-in-unreal-engine) 와 [Map Containers](https://dev.epicgames.com/documentation/en-us/unreal-engine/map-containers-in-unreal-engine) 에 같은 문장이 있습니다. 인용은 TArray 쪽이고, TMap 문서도 주어만 바뀝니다. 2026년 9월에 본 5.8 문서 기준입니다.
 
-[^inpractice]: Arthur O'Dwyer, [What library types are `trivially_relocatable` in practice?](https://quuxplusone.github.io/blog/2019/02/20/p1144-what-types-are-relocatable/) (2019). `list`·`set`·`map` 이 센티넬(글에서는 이렇게 부르지만 그 글은 end node 라고 씁니다)을 객체 안에 두기 때문이라고 적혀 있습니다. MSVC 쪽에는 조건부라는 단서가 붙어 있습니다.
+[^inpractice]: Arthur O'Dwyer, [What library types are `trivially_relocatable` in practice?](https://quuxplusone.github.io/blog/2019/02/20/p1144-what-types-are-relocatable/) (2019). `list`·`set`·`map` 이 센티넬(글에서는 이렇게 부르지만 그 글은 end node 라고 씁니다)을 객체 안에 두기 때문이라고 적혀 있습니다. MSVC 의 `list` 칸은 조건 없이 되고, `set`·`map` 칸은 템플릿 인자에 따라 되는 조건부로 적혀 있습니다.
 
-[^kona]: C++26 에 들어갔던 trivial relocation 은 2025년 11월 코나 회의에서 표준 초안에서 빠졌습니다. 이름과 실제 동작이 어긋난다는 지적을 제때 고칠 수 없다는 판단이었고, C++29 를 목표로 다시 다듬는 중입니다 → [Kona 회의 결과 정리](https://quuxplusone.github.io/blog/2025/11/18/kona-trip-report/).
+[^kona]: C++26 에 들어갔던 trivial relocation 은 2025년 11월 코나 회의에서 표준 초안에서 빠졌습니다. 여러 나라 대표단이 빼자는 의견을 냈고, 표준 라이브러리 구현자들이 이 모양으로는 쓸 수 없다고 봤습니다. C++29 에서 다시 다룰 것으로 보입니다 → [Kona 회의 결과 정리](https://quuxplusone.github.io/blog/2025/11/18/kona-trip-report/).
