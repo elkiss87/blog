@@ -59,7 +59,8 @@ jobs:
       # (기본 배포 방식은 저장소 루트를 통째로 올리고 Jekyll 까지 돌려서
       #  작업 문서가 개인 도메인에서 서비스된다. 그래서 이 워크플로를 쓴다)
       #
-      # CNAME 은 static/ 에 있어서 Hugo 가 알아서 복사한다. 빼먹으면 커스텀 도메인이 풀린다.
+      # CNAME 은 static/ 에 있어서 Hugo 가 알아서 복사한다. 다만 Actions 배포에서는
+      # GitHub 이 이 파일을 읽지 않는다. 도메인은 저장소의 Pages 설정에 저장돼 있다.
       - name: Build site (Hugo)
         run: |
           hugo --minify --destination _site
