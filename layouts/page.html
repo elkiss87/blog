@@ -9,11 +9,16 @@
       {{ with .Date }}
         <p class="post-date">
           <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time>
-          {{- /* 발행 뒤에 고친 글은 고친 날을 옆에 적는다. front matter 의 lastmod 만 믿는다 —
-                 git 날짜로 뽑으면 폴더를 옮기는 커밋까지 고친 날로 잡힌다 (hugo.toml [frontmatter]).
-                 같은 날 고친 것은 안 적는다. 발행한 날과 구분이 안 되니 적어봐야 소음이다 */ -}}
+          {{- /* 발행 뒤에 고친 글은 고친 날을 옆에 적는다 — "2026-09-22 · updated 09-24".
+                 front matter 의 lastmod 만 믿는다. git 날짜로 뽑으면 폴더를 옮기는 커밋까지
+                 고친 날로 잡힌다 (hugo.toml [frontmatter]). 같은 날 고친 것은 안 적는다.
+
+                 고친 날은 발행한 해와 같으면 월·일만, 다르면 연도까지 적는다.
+                 연도를 늘 빼면 12월에 쓰고 1월에 고친 글이 "2026-12-30 · updated 01-05" 가 되어
+                 쓴 날보다 앞선 날 고친 것처럼 읽힌다 */ -}}
           {{ if gt ($.Lastmod.Format "2006-01-02") ($.Date.Format "2006-01-02") }}
-            · <time datetime="{{ $.Lastmod.Format "2006-01-02" }}">{{ $.Lastmod.Format "2006-01-02" }}</time> 고침
+            {{- $shown := cond (eq $.Lastmod.Year $.Date.Year) "01-02" "2006-01-02" }}
+            · updated <time datetime="{{ $.Lastmod.Format "2006-01-02" }}">{{ $.Lastmod.Format $shown }}</time>
           {{- end }}
         </p>
       {{ end }}
