@@ -1,0 +1,72 @@
+# athena-moving-jar
+# 2026-09-23 · ChatGPT 이미지 생성
+#
+# 세 번째 글 「윈도우에선 우연히 돌아가고 있었습니다」 2절 끝.
+# "맵은 자기가 옮겨졌다는 사실을 모릅니다" 바로 뒤에 들어간다.
+#
+# 컨테이너가 자라면 원소를 새 자리로 옮긴다 — 작은 옛 선반에서 긴 새 선반으로.
+# 단지에서 나온 끈 하나가 옛 선반의 빈자리에 묶인 채 팽팽하게 당겨진다.
+# 옮긴 뒤에도 맵이 옛 주소를 가리키는 것을 이 끈 하나로 보인다.
+# 선반이 커지는 것이 "자리를 넓힌다" 이고, 빈자리에 남은 말뚝이 "옛 주소" 다.
+#
+# 아테나는 모르고 걸어가고, 올빼미가 뒤를 돌아 끈을 본다. 올빼미가 리액션 담당이다 → §6
+# 모르고 옮기는 것이 이 버그의 성격이라, 아테나가 알아채는 그림으로 두지 않았다.
+#
+# 금색은 두 곳 — 투구, 그리고 팽팽한 끈. 브로치는 이 컷에서 회색이다 (아래 고친 기록).
+# 커버의 주홍 노드는 지휘관 색이라 이 컷에서는 쓰지 않는다. 트리는 회색이다 → §2
+# 센티넬 구슬(고리에 싸인 구슬)은 뺐다. 커버에서 한 번 보였고, 여기서는 끈이 주인공이다.
+#
+# C 블록의 지물 문장("measuring tools")은 뺐다. 이 컷에서는 단지를 두 손으로 든다.
+# 표지판 컷(athena-signpost)과 같은 처리다.
+#
+# 고친 기록 (2026-09-23)
+#   1판 — 살짝 위에서 내려다보는 무대 구도. 가는 실이 해칭 사이에서 안 읽혔고 구도가 평범했다
+#   2판 — 옛 선반 빈자리에 카메라를 두고 굵은 끈을 시선의 선으로 삼았다. 끈은 읽혔는데
+#         구도가 너무 튀었고, **끈이 아테나의 브로치에 이어져 나왔다.**
+#         금색이 브로치와 끈 둘이었고, 끈 끝(가슴에 안은 단지)이 어깨 브로치와 붙어 있었다.
+#         같은 색 둘이 가까이 있으면 모델이 한 물건으로 읽는다
+#   3판 — 브로치를 회색으로 내리고, 단지를 허리 높이로 앞으로 들게 해서 끈 끝을 가슴에서
+#         떨어뜨리고, "끈은 코르크에서 말뚝까지만 간다" 를 문장으로 적었다.
+#         구도는 둘 사이 — 살짝 위에서 비스듬히 보는 3/4 앵글. 끈이 대각선으로 지나간다
+#
+# 뽑을 때 참조 — athena-copies.png(아테나 얼굴), commander-jars.png(단지 모양).
+# commander-jars 는 배경이 반투명하게 깔려 있어서 따라 나올 수 있다. 나와도 쓸 수는 있다 → §3
+#
+# 생성 결과는 나온 뒤에 여기 적는다 — 해상도, 투명 비율, 프롬프트와 어긋난 자리.
+
+Draw a wide landscape illustration (about 3:2), in loose pencil sketch style,
+on a completely empty transparent canvas. Only the figures described below
+are drawn. Everything around them and behind them is empty transparent space,
+edge to edge, with no ground and no shadow.
+
+A cute 2.5-head-tall SD chibi girl named Athena: shoulder-length wavy hair, a
+small Corinthian helmet worn like a hat, tilted back so her whole face is
+visible. Large round curious eyes.
+
+She wears a short sleeveless Greek chiton dress with a shoulder brooch and a
+waist cord, and simple sandals. A palm-sized round owl companion is perched on
+her shoulder.
+
+Two plain wooden shelves stand in a row, a small old shelf on the left and a
+longer new shelf on the right, seen at a gentle three-quarter angle from a
+little above. Athena walks from the old shelf toward the new one, holding a
+glass jar out in front of her at waist height with both hands. The jar is
+stoppered with a cork and holds a small tree of seven round beads joined by
+short straight threads.
+
+A thick braided cord is tied to the jar's cork and runs back, taut and
+straight, to a short wooden peg on the old shelf, at the empty spot where the
+jar used to stand, marked by a round ring in the dust. The cord goes only from
+the cork to the peg. It is pulled so tight that the jar tips back toward the
+old shelf in her hands. She keeps walking without noticing, while the owl on
+her shoulder has turned around and stares at the taut cord with wide alarmed
+eyes.
+
+No other scenery at all — no walls, no floor, no room.
+
+Style: loose pencil sketch, monochrome graphite line art with light hatching.
+The entire drawing is grayscale EXCEPT one warm gold accent (#c9a227), used
+only on two things — her helmet and the taut braided cord. Everything else,
+including her hair, her shoulder brooch, the owl, the shelves, the peg, the
+dust ring, the jar, the cork and every bead inside it, stays grey. No writing
+or lettering anywhere in the image. The background is fully transparent.
