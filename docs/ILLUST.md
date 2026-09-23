@@ -101,8 +101,10 @@
 - **바닥 그림자를 넣지 말라고 명시한다.** 모델이 요청 없이도 자주 그린다
 - 투명이 안 되면 순백으로 받아서 흰색을 뺀다. 배경에 회색 기가 돌면
   테두리에 얼룩이 남으니 **순백인지 확인한다**
-- **파일은 `assets/images/` 에 둔다.** `static/` 에 두면 Hugo 가 손을 못 대서
-  원본이 그대로 나간다. 파일명은 글 주소와 같은 규칙 — 영문 소문자와 하이픈
+- **글 그림은 글 폴더에, 공용 그림은 `assets/images/` 에 둔다** (2026-09-24 부터).
+  글 그림은 `content/posts/<글>/images/`, 여러 곳이 같이 쓰는 그림(소개·사이트 기본)은
+  `assets/images/`. 마크다운 경로는 둘 다 `images/…` 다. `static/` 에는 두지 않는다 —
+  Hugo 가 손을 못 대서 원본이 그대로 나간다. 파일명은 영문 소문자와 하이픈
 - 용량은 **빌드가 줄인다.** 렌더 훅이 `1440x webp q85` 로 변환한다.
   손으로 줄일 일이 없다 → `layouts/_markup/render-image.html`
 
@@ -474,7 +476,8 @@ Single centered subject with generous empty space around it.
 | `athena-footprints.png` | 두 번째 글 「기본 배포는…」 | 2026-09-06 | 2.75MB → 315KB |
 | `commander-jars.png` | **세 번째 글 커버** | 2026-09-22 | 2.89MB → 344KB |
 
-전부 `assets/images/` 에 있다. 원본 합계 12.8MB 가 배포본에서는 1,353KB 다.
+공용인 `athena-and-commander` 만 `assets/images/` 에 있고, 나머지는 각자 글 폴더
+(`content/posts/<글>/images/`)에 있다 (2026-09-24 부터). 원본 합계 12.8MB 가 배포본에서는 1,353KB 다.
 (배포본 숫자는 `1440x webp` 만 센 것이다. 커버는 `og:image` 용 jpg 가 하나 더 나온다)
 
 **다크에서 밝은 면적**(화면 대비, 알파 128 초과 픽셀 중 휘도 200 초과):
@@ -495,8 +498,10 @@ Single centered subject with generous empty space around it.
 **컷마다 실제로 보낸 프롬프트 전문을 같은 이름의 `.prompt.txt` 로 남긴다.**
 
 ```
-assets/images/athena-and-commander.png
+assets/images/athena-and-commander.png                        공용 그림
 assets/images/athena-and-commander.prompt.txt
+content/posts/stdmap-relocation/images/commander-jars.png     글 그림
+content/posts/stdmap-relocation/images/commander-jars.prompt.txt
 ```
 
 아래의 블록만으로는 재현이 안 된다. A·B·C 를 캐릭터 몫으로 각각 꺼내고 D·E 를 붙이고
@@ -508,8 +513,9 @@ F 의 포인트 지정을 갈아 끼워야 하는데, **손으로 조립하다 �
 파일 옆에 두면 그림과 프롬프트가 붙어 다녀서 어긋날 수가 없고, 컷이 늘어도
 이 문서가 부풀지 않는다.
 
-`.txt` 는 `assets/` 에 있어도 **웹에 안 나간다.** 렌더 훅이 가져다 쓰지 않는 파일은
-빌드 결과에 포함되지 않는다.
+`.txt` 는 **웹에 안 나간다.** `assets/` 는 템플릿이 쓴 파일만 내보내고,
+글 폴더는 `content/posts/_index.md` 의 `publishResources: false` 가 같은 일을 한다.
+**그 한 줄이 없으면 글 폴더는 통째로 나간다** — 원본 PNG 와 프롬프트까지 (2026-09-24 확인).
 
 ### `athena-and-commander` 의 D·E 블록
 

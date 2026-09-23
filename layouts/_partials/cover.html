@@ -4,8 +4,8 @@
 
          cover: images/athena-question.png
 
-       경로는 assets/ 기준이다. 본문 그림과 같은 규칙이라 따로 외울 것이 없다
-       (layouts/_markup/render-image.html).
+       글 폴더에서 먼저 찾고, 없으면 assets/ 에서 찾는다. 본문 그림과 같은 규칙이라
+       따로 외울 것이 없다 (layouts/_markup/render-image.html).
 
        한 장이 세 군데서 일한다 — 글 목록, 글 상단, og:image (docs/PLAN.md §5).
        크기와 형식은 쓰는 쪽에서 정한다. 여기서는 원본만 찾아준다.
@@ -16,7 +16,8 @@
 
 {{- $img := "" -}}
 {{- with .Params.cover -}}
-  {{- with resources.Get (strings.TrimPrefix "/" .) -}}
+  {{- $path := strings.TrimPrefix "/" . -}}
+  {{- with or ($.Resources.Get $path) (resources.Get $path) -}}
     {{- $img = . -}}
   {{- end -}}
 {{- end -}}
