@@ -32,7 +32,11 @@
 # 뽑을 때 참조 — athena-copies.png(아테나 얼굴), commander-jars.png(단지 모양).
 # commander-jars 는 배경이 반투명하게 깔려 있어서 따라 나올 수 있다. 나와도 쓸 수는 있다 → §3
 #
-# 생성 결과는 나온 뒤에 여기 적는다 — 해상도, 투명 비율, 프롬프트와 어긋난 자리.
+# 결과 (2026-09-23 3판 채택) — 1536x1024, 완전 투명 65.4%, 밝은 반투명 3.0%.
+# 라이트·다크 양쪽을 페이지에 올려 확인했다. 어긋난 자리 —
+#   - 단지를 허리 높이로 들라고 했는데 가슴에 안고 나왔다. 끈이 올빼미 옆을 지나 코르크에 닿는다.
+#     브로치를 회색으로 내린 덕에 어깨에 묶인 것으로는 안 읽힌다
+#   - 올빼미는 뒤돌아보지 않고 정면을 본다. 놀란 눈은 나왔다
 
 Draw a wide landscape illustration (about 3:2), in loose pencil sketch style,
 on a completely empty transparent canvas. Only the figures described below

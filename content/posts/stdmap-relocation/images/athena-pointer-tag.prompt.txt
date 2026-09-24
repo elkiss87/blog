@@ -1,0 +1,70 @@
+# athena-pointer-tag
+# 2026-09-23 · ChatGPT 이미지 생성
+#
+# 세 번째 글 「윈도우에선 우연히 돌아가고 있었습니다」 「예약으로 막고, 포인터로 고쳤습니다」.
+# "맵이 안 움직이니 그 안의 센티넬도 안 움직이고" 문단 뒤에 들어간다.
+#
+# athena-moving-jar 의 짝이다. 같은 두 선반, 같은 3/4 앵글이다.
+# 이번에는 단지가 떠나지 않는다. 옛 선반 옆 받침돌 위에 서 있고,
+# 끈은 느슨하게 늘어져 새 선반에 꼬리표를 거는 아테나 손까지 이어진다.
+# 앞 컷에서 "단지를 든 아테나" 였던 자리에 여기서는 "꼬리표를 든 아테나" 가 있다.
+# 앵글이 같으니 무엇이 바뀌었는지가 그 손 하나로 갈린다 (2026-09-23 고침).
+#
+# 대응 — 선반이 컨테이너, 꼬리표가 unique_ptr, 받침돌 위의 단지가 힙에 있는 맵이다.
+# 컨테이너가 자라며 옮기는 것은 포인터뿐이라 맵은 움직이지 않는다. 그게 글이 말하는 고친 방법이다.
+#
+# 올빼미는 차분하게 작게 끄덕인다. 앞 컷에서 놀랐던 올빼미가 여기서 풀린다 → §6
+#
+# 금색은 두 곳 — 투구, 그리고 아테나가 옮기는 꼬리표 하나. 브로치는 회색이다.
+# 짝 컷에서 브로치와 끈이 같은 금색이라 한 물건으로 이어져 나왔다 → athena-moving-jar 고친 기록
+# 앞 컷에서는 끈이 금색이었고 여기서는 꼬리표다. 봐야 할 것이 옮겨갔다는 것이 이 짝의 요지다.
+# 꼬리표는 비워둔다. 글자를 쓰지 않는다 → §3
+#
+# 참조 이미지 없이 뽑는다 (2026-09-24 고침). 처음엔 athena-moving-jar.png 를 첨부하는 전제로
+# "as in the attached picture" 라고 적었는데, 첨부 없이 넘기자 모델이 그림을 달라고 되물었다.
+# 대신 선반·앵글을 짝 컷과 **같은 문장**으로 적었다. 같은 말을 주면 같은 무대가 나온다
+#
+# 결과 (2026-09-24) — 1536x1024.
+#   - 첫 판: 밝은 반투명 13.8%. 다크에서 선반·받침돌 주변에 흰 안개가 스포트라이트처럼 번졌다.
+#     짝 컷(3.0%) 옆에서 이것만 조명이 켜진 것처럼 보였다
+#   - 같은 대화에서 "선 바로 바깥부터 완전히 투명하게, 나머지는 그대로" 로 한 번 고쳤다.
+#     밝은 반투명 8.4%, 완전 투명 54.4%. 다크에서 선반 아래 옅은 빛만 남아 통과로 봤다
+#   - 안개만 지우는 후처리는 안 했다. 유리 단지도 반투명한 밝은 픽셀이라 같이 지워진다
+# 어긋난 자리 — 선반이 짝 컷의 긴 널판이 아니라 두 단짜리 작은 탁자로 나왔다.
+#   같은 문장을 줘도 참조 없이는 가구 모양까지 같게 나오지 않는다. 전후로 읽히는 데는 지장이 없다
+
+Draw a wide landscape illustration (about 3:2), in loose pencil sketch style,
+on a completely empty transparent canvas. Only the figures described below
+are drawn. Everything around them and behind them is empty transparent space,
+edge to edge, with no ground and no shadow.
+
+A cute 2.5-head-tall SD chibi girl named Athena: shoulder-length wavy hair, a
+small Corinthian helmet worn like a hat, tilted back so her whole face is
+visible. Large round curious eyes.
+
+She wears a short sleeveless Greek chiton dress with a shoulder brooch and a
+waist cord, and simple sandals. A palm-sized round owl companion is perched on
+her shoulder.
+
+Two plain wooden shelves stand in a row, a small old shelf on the left and a
+longer new shelf on the right, seen at a gentle three-quarter angle from a
+little above. Beside the old shelf, a glass jar stands on a low stone
+pedestal. The jar is stoppered with a cork and holds a small tree of seven
+round beads joined by short straight threads, still and whole. The jar stays
+where it is.
+
+A long cord is tied to the jar's cork and runs in a loose, sagging curve to a
+small blank paper tag, like a luggage tag. Athena stands at the new shelf,
+holding that tag out at arm's length and hanging it on a hook; the tag is all
+she carries. The cord goes only from the cork to the tag. The owl on her
+shoulder looks calm and gives a small approving nod.
+
+No other scenery at all — no walls, no floor, no room.
+
+Style: loose pencil sketch, monochrome graphite line art with light hatching.
+The entire drawing is grayscale EXCEPT one warm gold accent (#c9a227), used
+only on two things — her helmet and the single tag she is hanging. Everything
+else, including her hair, her shoulder brooch, the owl, the shelves, the cord,
+the pedestal, the jar and every bead inside it, stays grey. No writing or
+lettering anywhere in the image; the tag is blank. The background is fully
+transparent.

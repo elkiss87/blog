@@ -460,7 +460,7 @@ Single centered subject with generous empty space around it.
 
 ## 12. 그린 것 — 기록
 
-일곱 다 1536×1024 (3:2), 투명 PNG 다.
+아홉 다 1536×1024 (3:2), 투명 PNG 다.
 
 **`commander-jars` 가 어두운 배경을 달고 있다고 적었던 것은 틀렸다** (2026-09-23 정정).
 미리보기가 투명을 검게 깔아 보여준 착시였다. 알파로 재면 "반투명하면서 어두운" 픽셀이 0.0% 다.
@@ -475,6 +475,8 @@ Single centered subject with generous empty space around it.
 | `athena-signpost.png` | **두 번째 글 커버** | 2026-08-29 | 1.93MB → 186KB |
 | `athena-footprints.png` | 두 번째 글 「기본 배포는…」 | 2026-09-06 | 2.75MB → 315KB |
 | `commander-jars.png` | **세 번째 글 커버** | 2026-09-22 | 2.89MB → 344KB |
+| `athena-moving-jar.png` | 세 번째 글 「원소가 늘면 컨테이너가 자리를 옮깁니다」 | 2026-09-23 | 2.12MB |
+| `athena-pointer-tag.png` | 세 번째 글 「예약으로 막고, 포인터로 고쳤습니다」 | 2026-09-24 | 2.25MB |
 
 공용인 `athena-and-commander` 만 `assets/images/` 에 있고, 나머지는 각자 글 폴더
 (`content/posts/<글>/images/`)에 있다 (2026-09-24 부터). 원본 합계 12.8MB 가 배포본에서는 1,353KB 다.
