@@ -1,0 +1,71 @@
+# athena-rule-plaque
+# 2026-09-26 · ChatGPT 이미지 생성
+#
+# 세 번째 글 「윈도우에선 우연히 돌아가고 있었습니다」 마지막 절 「둘 다 맞는 선택이었습니다」.
+# "저는 그게 마음에 들었습니다" 문단 바로 뒤에 들어간다.
+#
+# 왜 이 자리인가 — 마지막 절까지 이어지는 마른 구간이 1,153자였다(「컴파일러가…」 끝 281자 +
+# 마지막 절 872자). 절 사이에 넣으면 마지막 절만으로 800자를 넘어서, 절 안에서 끊어야 했다.
+# 이 자리에서 끊으면 572자 / 568자로 반씩 나뉘고, 언리얼 이야기와 표준 라이브러리 이야기의 경계다.
+#
+# 왜 그림인가 — 감상을 적은 절이라 표나 코드를 넣으면 읽을 것이 늘어난다. 쉬는 쉼표는 삽화뿐이다
+# → docs/ILLUST.md §10. 다만 "두 세계" 같은 상징 그림은 안 된다(athena-sieve 의 교훈).
+# 앞 문단에 적힌 구체적인 장면을 그린다 — 언리얼은 그 규칙을 문서 첫 줄에 적어뒀고,
+# 무엇을 가정하는지 알고 쓰면 된다. 단지를 선반에 올리기 전에 선반에 달린 규칙 팻말을
+# 돋보기로 읽는 아테나다.
+#
+# 돋보기는 아테나 설정의 원래 지물이다(§6). 세 번째 글에서 처음 제자리를 찾는다.
+#
+# 금색은 두 곳 — 투구, 그리고 규칙 팻말의 테두리. 봐야 할 것은 팻말이다.
+# 브로치는 회색이다. 같은 색 둘이 가까우면 한 물건으로 읽힌다 → athena-moving-jar 고친 기록
+# 팻말에는 글자 대신 물결선을 그린다 → §3
+#
+# 앵글 — 앞의 두 컷이 위에서 내려다보는 선반 장면이라 눈높이에서 조금 가까이 간다.
+# 튀는 구도는 피한다(짝 컷 2판의 교훈). 팻말·돋보기·얼굴·단지가 한 화면에 들어오는 정도다.
+#
+# 참조 이미지 없이 뽑는다. 단지 모양은 앞 컷들과 같은 문장으로 적었다.
+# 흰 안개가 번지지 않게 하는 문장을 첫 문단에 넣었다 → athena-pointer-tag 결과 기록
+#
+# 결과 (2026-09-26) — 1536x1024.
+#   - 첫 판은 그림이 좋았는데 **배경에 체크무늬가 그려져 왔다.** 투명을 흉내 낸 무늬를
+#     색으로 칠해 넣은 것이라 파일에 알파 채널이 아예 없었다(PNG 색 형식 2, RGB).
+#     칸이 12.5px 로 픽셀에 안 맞고 두 색(254·228)이 종이 결과 비슷해서 손으로 지우기 어려웠다
+#   - 같은 대화에서 "체크무늬는 투명을 흉내 낸 그림이다, 알파 채널이 있는 진짜 투명 PNG 로,
+#     나머지는 그대로" 로 한 번 고쳤다. RGBA 로 왔고 완전 투명 54.4%, 밝은 반투명 0.5% —
+#     세 번째 글 삽화 중 제일 깨끗하다. 라이트·다크 페이지에서 확인했다
+# 어긋난 자리 — 없다. 돋보기·팻말·단지·올빼미가 주문대로 나왔고 금색도 두 곳만 칠해졌다.
+
+Draw a wide landscape illustration (about 3:2), in loose pencil sketch style,
+on a completely empty transparent canvas. Only the figures described below
+are drawn. Everything around them and behind them is empty transparent space,
+edge to edge, with no ground and no shadow. The pencil lines end crisply
+against the empty canvas, with no soft light or halo around any object.
+
+A cute 2.5-head-tall SD chibi girl named Athena: shoulder-length wavy hair, a
+small Corinthian helmet worn like a hat, tilted back so her whole face is
+visible. Large round curious eyes.
+
+She wears a short sleeveless Greek chiton dress with a shoulder brooch and a
+waist cord, and simple sandals. A palm-sized round owl companion is perched on
+her shoulder.
+
+On the left stands the end of a plain wooden shelf, and on its front edge
+hangs a small wooden plaque with a raised frame, its face covered in rows of
+wavy squiggle lines instead of words, like a short written rule. Athena stands
+in front of it, holding a glass jar in the crook of one arm. The jar is
+stoppered with a cork and holds a small tree of seven round beads joined by
+short straight threads. With her other hand she holds a round magnifying glass
+up to the plaque and leans in, reading it carefully before she puts the jar
+down. The owl on her shoulder leans in too and gives a small approving nod.
+
+Seen at eye level from a little closer than a full-body view, so that the
+plaque, the magnifying glass, her face and the jar all fit together across the
+wide frame. No other scenery at all — no walls, no floor, no room.
+
+Style: loose pencil sketch, monochrome graphite line art with light hatching.
+The entire drawing is grayscale EXCEPT one warm gold accent (#c9a227), used
+only on two things — her helmet and the raised frame of the plaque. Everything
+else, including her hair, her shoulder brooch, the owl, the shelf, the
+magnifying glass, the jar, the cork and every bead inside it, stays grey. No
+writing or lettering anywhere in the image; the plaque shows only wavy lines.
+The background is fully transparent.
