@@ -79,8 +79,16 @@ git ls-files -z | xargs -0 grep -nI '박' | grep -v '^CLAUDE.md:'
 **공동 작성자 표시를 붙인다.** 메시지 마지막 줄에 남긴다.
 
 ```
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Co-Authored-By: Claude <작업 세션의 모델> <noreply@anthropic.com>
+
+예) Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+    Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
 ```
+
+**모델 이름은 그 커밋을 만든 작업 세션의 모델로 적는다** (2026-09-28 지정).
+세션마다 켜둔 모델이 다를 수 있다. 원래 `Claude Opus 5` 로 이름을 고정해 적었는데,
+09-24 부터 세션 모델이 Opus 5.5 로 바뀌면서 **규칙 문구와 실제로 만든 쪽이 어긋났다.**
+이 줄이 하는 일은 누가 만들었는지 밝히는 것이라, 이름이 실제와 다르면 줄을 단 뜻이 없어진다.
 
 08-12 에 형식을 한글로 바꾸면서 이 줄이 딸려 나갔고, **열 커밋 동안 빠진 채로 올라갔다**
 (2026-08-21 발견). 빠뜨리기로 정한 적이 없는데 규칙에 안 적혀 있어서 조용히 사라졌다.

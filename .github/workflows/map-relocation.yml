@@ -24,7 +24,7 @@ jobs:
         working-directory: lab/map-relocation
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # 서드파티 액션 없이 러너에 깔린 Visual Studio 를 찾아 개발자 셸로 들어간다.
       # /MD 는 언리얼과 같은 릴리스 CRT 다. 언리얼은 디버그 빌드에서도 이쪽을 쓴다.
@@ -44,7 +44,7 @@ jobs:
         working-directory: lab/map-relocation
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # 언리얼은 리눅스에서 엔진에 딸린 libc++ 로 빌드한다. 그 조합을 보려고 받는다.
       # GCC 기본값인 libstdc++ 는 러너에 이미 있다.

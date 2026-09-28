@@ -70,7 +70,8 @@ static void walk(void* obj, void* range, size_t size)
         printf("  +%zu  %p", i * sizeof(void*), word[i]);
         if (value >= base && value < base + size)
         {
-            printf("  <- into the map at %p (+%d)", range, (int)(value - base));
+            printf("  <- into the map at %p (+%d)",
+                   range, (int)(value - base));
         }
         printf("\n");
     }
