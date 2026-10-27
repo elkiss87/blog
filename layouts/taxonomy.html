@@ -1,0 +1,15 @@
+{{ define "main" }}
+  {{/* 태그 모음 — /tags/. 이름과 글 수만 늘어놓는다 (docs/PLAN.md §5 "태그").
+       글이 많은 태그가 먼저 온다. 많이 묶인 쪽이 이 블로그가 자주 다루는 주제다 */}}
+  <h1 class="page-title">{{ .Title }}</h1>
+
+  {{ with .Data.Terms.ByCount }}
+    <ul class="tag-list">
+      {{ range . }}
+        <li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}<span class="tag-count">{{ .Count }}</span></a></li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p class="note">아직 태그가 없습니다.</p>
+  {{ end }}
+{{ end }}

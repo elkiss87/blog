@@ -257,6 +257,50 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+/* ── 태그 ────────────────────────────────────── */
+
+/* 태그 페이지 제목 위의 "태그". 모음으로 가는 길이 이것 하나라 (헤더에 없다)
+   제목에 붙여 둔다. 제목과의 간격을 좁혀야 제목에 딸린 말로 읽힌다 */
+.page-kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--text-sub);
+}
+.page-kicker a { color: inherit; text-decoration: none; }
+.page-kicker a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* 글 상단과 태그 모음이 같은 모양을 쓴다.
+   색은 새로 만들지 않았다 — 목록 카드와 같은 --code-bg 와 --line 이다 */
+.tag-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-list a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 3px 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-sub);
+  text-decoration: none;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.tag-list a:hover { color: var(--text); }
+.tag-list a:focus-visible { outline: 2px solid var(--text-sub); outline-offset: 2px; }
+
+.tag-count { font-variant-numeric: tabular-nums; opacity: .7; }
+
+/* 글 상단에서는 날짜 아래에 붙는다. 날짜와 같은 무리라 간격을 날짜와 제목 사이(10px)와 맞춘다 */
+.post-tags { margin-top: 10px; }
+
 /* ── 글 본문 ─────────────────────────────────── */
 
 .post-head { margin-bottom: 36px; }

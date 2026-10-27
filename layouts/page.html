@@ -22,6 +22,14 @@
           {{- end }}
         </p>
       {{ end }}
+
+      {{/* 태그가 보이는 곳은 여기 하나다. 목록 카드에는 넣지 않는다 (docs/PLAN.md §5 "태그").
+           이름은 content/tags/<키>/_index.md 의 title 이다 — front matter 에 적은 키가 아니다 */}}
+      {{ with .GetTerms "tags" }}
+        <ul class="tag-list post-tags">
+          {{ range . }}<li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>{{ end }}
+        </ul>
+      {{ end }}
     </header>
 
     {{/* 목록에 쓰는 커버와 같은 파일이다. 글 안에서는 도입 그림 노릇을 한다.
